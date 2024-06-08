@@ -1,0 +1,271 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Thiết lập font chữ cho trang */
+    background-color: #000; /* Màu nền đen */
+    margin: 0; /* Bỏ khoảng cách mặc định */
+    padding: 0; /* Bỏ phần padding mặc định */
+    position: relative; /* Thiết lập vị trí tương đối */
+    color: #fff; /* Màu chữ trắng */
+}
+
+.container {
+    max-width: 1200px; /* Chiều rộng tối đa là 1200px */
+    margin: 0 auto; /* Canh giữa */
+    padding: 20px; /* Thêm padding 20px */
+    position: relative; /* Thiết lập vị trí tương đối */
+    transition: filter 0.3s ease, brightness 0.3s ease; /* Hiệu ứng chuyển đổi bộ lọc và độ sáng trong 0.3 giây */
+}
+
+.top-box {
+    height: 300px; /* Chiều cao 300px */
+    background-image: url("https://nqs.1cdn.vn/2023/12/30/static-images.vnncdn.net-files-publish-2023-12-29-_su-pham-ky-thuat-3915.jpeg"); /* Đường dẫn ảnh nền */
+    background-size: cover; /* Ảnh nền bao phủ toàn bộ */
+    background-position: center; /* Đặt vị trí ảnh ở giữa */
+    background-repeat: no-repeat; /* Không lặp lại ảnh nền */
+    display: flex; /* Hiển thị dạng flex */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    flex-direction: column; /* Chiều hướng của flex là cột */
+    position: relative; /* Thiết lập vị trí tương đối */
+    margin-bottom: 50px; /* Thêm khoảng cách dưới 50px */
+    border-radius: 10px; /* Bo góc 10px */
+    overflow: hidden; /* Ẩn nội dung tràn */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+}
+
+.top-box::before {
+    content: ""; /* Nội dung rỗng */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%); /* Hiệu ứng gradient */
+    position: absolute; /* Thiết lập vị trí tuyệt đối */
+    top: 0; /* Cách trên 0 */
+    left: 0; /* Cách trái 0 */
+    width: 100%; /* Chiều rộng 100% */
+    height: 100%; /* Chiều cao 100% */
+}
+
+.top-box h1 {
+    color: #fff; /* Màu chữ trắng */
+    margin: 0; /* Bỏ khoảng cách */
+    font-size: 48px; /* Kích thước chữ 48px */
+    font-weight: bold; /* Chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng cho chữ */
+    z-index: 2; /* Đặt z-index để nội dung hiển thị trên nền */
+    position: relative; /* Thiết lập vị trí tương đối */
+}
+
+.menu {
+    position: fixed; /* Vị trí cố định */
+    top: 0; /* Cách trên 0 */
+    left: 0; /* Cách trái 0 */
+    width: 60px; /* Chiều rộng 60px */
+    height: 100%; /* Chiều cao 100% */
+    background-color: rgba(0, 123, 255, 0); /* Màu nền trong suốt */
+    overflow-x: hidden; /* Ẩn tràn theo chiều ngang */
+    transition: width 0.3s ease, left 0.3s ease; /* Hiệu ứng chuyển đổi chiều rộng và vị trí */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    z-index: 1000; /* Đặt z-index để nội dung hiển thị trên */
+    display: flex; /* Hiển thị dạng flex */
+    flex-direction: column; /* Chiều hướng của flex là cột */
+    align-items: center; /* Canh giữa theo chiều ngang */
+    justify-content: flex-start; /* Canh đầu theo chiều dọc */
+    padding-top: 20px; /* Thêm khoảng cách trên 20px */
+}
+
+.menu:hover {
+    width: 250px; /* Tăng chiều rộng khi hover */
+    top: -20px; /* Dịch chuyển lên trên khi hover */
+    background-color: rgba(94, 105, 116, 0.8); /* Màu nền thay đổi khi hover */
+}
+
+.menu .menu-label {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #fff; /* Màu chữ trắng */
+    font-size: 20px; /* Kích thước chữ 20px */
+    padding: 15px; /* Thêm padding 15px */
+    text-transform: uppercase; /* Viết hoa chữ */
+    letter-spacing: 1px; /* Khoảng cách chữ 1px */
+    display: block; /* Hiển thị dạng block */
+    width: 100%; /* Chiều rộng 100% */
+    text-align: center; /* Canh giữa chữ */
+    background-color: rgba(105, 9, 9, 0.205); /* Màu nền */
+}
+
+.menu:hover .menu-label {
+    background-color: #ffe680; /* Thay đổi màu nền khi hover */
+    color: #000; /* Thay đổi màu chữ khi hover */
+}
+
+.menu a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #fff; /* Màu chữ trắng */
+    font-size: 20px; /* Kích thước chữ 20px */
+    display: none; /* Ẩn link */
+    padding: 15px 10px; /* Thêm padding */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+    text-transform: uppercase; /* Viết hoa chữ */
+    letter-spacing: 1px; /* Khoảng cách chữ 1px */
+    width: 100%; /* Chiều rộng 100% */
+    text-align: left; /* Canh trái chữ */
+    padding-left: 20px; /* Thêm padding bên trái 20px */
+}
+
+.menu:hover a {
+    display: block; /* Hiển thị link khi hover */
+}
+
+.menu a:hover {
+    background-color: #0056b3; /* Thay đổi màu nền khi hover */
+}
+
+.info-title-container {
+    text-align: center; /* Canh giữa */
+    margin-bottom: 20px; /* Thêm khoảng cách dưới 20px */
+    margin-top: 200px; /* Thêm khoảng cách trên 200px */
+}
+
+.info-title {
+    font-size: 24px; /* Kích thước chữ 24px */
+    color: #fff; /* Màu chữ trắng */
+    margin-top: 20px; /* Thêm khoảng cách trên 20px */
+    text-transform: uppercase; /* Viết hoa chữ */
+    font-weight: bold; /* Chữ đậm */
+    letter-spacing: 1px; /* Khoảng cách chữ 1px */
+}
+
+.members {
+    display: flex; /* Hiển thị dạng flex */
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng */
+    margin-top: 20px; /* Thêm khoảng cách trên 20px */
+}
+
+.member {
+    margin: 20px; /* Thêm khoảng cách xung quanh 20px */
+    text-align: center; /* Canh giữa chữ */
+    padding: 20px; /* Thêm padding 20px */
+    background-color: rgba(255, 255, 255, 0.2); /* Màu nền trắng trong suốt */
+    border-radius: 10px; /* Bo góc 10px */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi khi hover */
+    width: 200px; /* Chiều rộng 200px */
+    position: relative; /* Thiết lập vị trí tương đối */
+    overflow: hidden; /* Ẩn nội dung tràn */
+}
+
+.member img {
+    width: 200px; /* Chiều rộng 200px */
+    height: 200px; /* Chiều cao 200px */
+    border-radius: 50%; /* Bo tròn */
+    margin-bottom: 5px; /* Thêm khoảng cách dưới 5px */
+}
+
+.member-info {
+    background-color: rgba(0, 0, 0, 0.8); /* Màu nền đen trong suốt */
+    color: #fff; /* Màu chữ trắng */
+    padding: 10px; /* Thêm padding 10px */
+    position: absolute; /* Thiết lập vị trí tuyệt đối */
+    bottom: 0; /* Cách dưới 0 */
+    left: 0; /* Cách trái 0 */
+    width: 100%; /* Chiều rộng 100% */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều rộng */
+    opacity: 0; /* Độ mờ 0 */
+    transition: opacity 0.3s ease; /* Hiệu ứng chuyển đổi độ mờ */
+}
+
+.member:hover .member-info {
+    opacity: 1; /* Độ mờ 1 khi hover */
+}
+
+.member-info h3,
+.member-info p {
+    margin: 5px 0; /* Thêm khoảng cách trên dưới 5px */
+    color: #fff; /* Màu chữ trắng */
+}
+
+#real-time-clock {
+    font-size: 36px; /* Kích thước chữ 36px */
+    color: #fff; /* Màu chữ trắng */
+    text-align: center; /* Canh giữa */
+    margin-top: 20px; /* Thêm khoảng cách trên 20px */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng cho chữ */
+    position: absolute; /* Thiết lập vị trí tuyệt đối */
+    top: 450px; /* Cách trên 450px */
+    left: 50%; /* Cách trái 50% */
+    transform: translateX(-50%); /* Dịch chuyển theo trục X */
+}
+
+.menu:hover ~ .container {
+    filter: brightness(70%); /* Giảm độ sáng khi hover vào menu */
+}
+
+.container {
+    padding-bottom: 220px; /* Thêm padding dưới 220px */
+}
+
+.group-image {
+    text-align: center; /* Canh giữa */
+    margin-top: 1px; /* Thêm khoảng cách trên 1px */
+}
+
+.group-image img {
+    width: 70%; /* Chiều rộng 70% */
+    height: auto; /* Chiều cao tự động */
+    display: block; /* Hiển thị dạng block */
+    margin: 0 auto; /* Canh giữa */
+}
+
+.contact-box {
+    background-image: url('./img/mu.jfif'); /* Đường dẫn ảnh nền */
+    background-size: cover; /* Ảnh nền bao phủ toàn bộ */
+    background-position: center; /* Đặt vị trí ảnh ở giữa */
+    padding: 20px; /* Thêm padding 20px */
+    margin-top: 20px; /* Thêm khoảng cách trên 20px */
+    border-radius: 10px; /* Bo góc 10px */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    color: rgba(255, 255, 255, 0.9); /* Màu chữ trắng trong suốt */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng cho chữ */
+}
+
+.contact-box h2 {
+    font-size: 48px; /* Kích thước chữ 48px */
+    font-weight: bold; /* Chữ đậm */
+    margin: 0; /* Bỏ khoảng cách */
+    text-align: left; /* Canh trái */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng cho chữ */
+    color: #000000; /* Màu chữ đen */
+}
+
+.contact-box p {
+    font-weight: bold; /* Chữ đậm */
+    margin: 0; /* Bỏ khoảng cách */
+    text-align: left; /* Canh trái */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng cho chữ */
+    color: #000000; /* Màu chữ đen */
+}
+
+.contact-box {
+    position: relative; /* Thiết lập vị trí tương đối */
+    padding: 20px; /* Thêm padding 20px */
+    margin-top: 20px; /* Thêm khoảng cách trên 20px */
+    border-radius: 10px; /* Bo góc 10px */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    overflow: hidden; /* Ẩn nội dung tràn */
+}
+
+.qr-code {
+    width: 150px; /* Chiều rộng 150px */
+    height: auto; /* Chiều cao tự động */
+    display: block; /* Hiển thị dạng block */
+    position: absolute; /* Thiết lập vị trí tuyệt đối */
+    top: 10px; /* Cách trên 10px */
+    right: 10px; /* Cách phải 10px */
+}
+
+.qr-code-momo {
+    width: 150px; /* Chiều rộng 150px */
+    height: auto; /* Chiều cao tự động */
+    display: block; /* Hiển thị dạng block */
+    position: absolute; /* Thiết lập vị trí tuyệt đối */
+    top: 10px; /* Cách trên 10px */
+    right: 200px; /* Cách phải 200px */
+}

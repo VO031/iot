@@ -1,0 +1,49 @@
+body {
+    background: linear-gradient(to bottom, #00c6ff, #0072ff, #00c6ff); /* Gradient màu nền */
+    font-family: Arial, sans-serif; /* Font chữ */
+    margin: 0; /* Bỏ khoảng cách */
+    padding: 0; /* Bỏ phần padding */
+    color: #fff; /* Màu chữ trắng */
+}
+
+h1 {
+    text-align: center; /* Căn giữa */
+    padding: 20px 0; /* Thêm padding trên dưới 20px */
+}
+
+.chart-container {
+    display: flex; /* Hiển thị dạng flex */
+    flex-direction: column; /* Chiều hướng là cột */
+    align-items: center; /* Canh giữa theo chiều ngang */
+}
+
+.column5 {
+    margin: 20px; /* Thêm khoảng cách xung quanh 20px */
+    padding: 20px; /* Thêm padding 20px */
+    background-color: #fff; /* Màu nền trắng */
+    border-radius: 10px; /* Bo góc 10px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    width: 90%; /* Chiều rộng 90% */
+    max-width: 800px; /* Chiều rộng tối đa là 800px */
+}
+
+.column5:hover {
+    transform: translateY(-5px); /* Dịch chuyển lên trên 5px khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+}
+
+.column5 h3 {
+    text-align: center; /* Căn giữa */
+    margin-bottom: 10px; /* Thêm khoảng cách dưới 10px */
+}
+
+canvas {
+    width: 100%; /* Chiều rộng 100% */
+    height: auto; /* Chiều cao tự động */
+    border-radius: 8px; /* Bo góc 8px */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+canvas:hover {
+    transform: scale(1.05); /* Phóng to khi hover */
+}

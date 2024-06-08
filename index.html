@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Thiết lập bảng mã UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Thiết lập hiển thị đúng trên các thiết bị di động -->
+    <title>Trang chính</title> <!-- Tiêu đề của trang -->
+    <link rel="stylesheet" href="styles.css"> <!-- Liên kết với một tệp CSS để tùy chỉnh kiểu dáng -->
+</head>
+<body>
+    <div class="menu"> <!-- Phần menu -->
+        <div class="menu-label">Menu</div> <!-- Nhãn menu -->
+        <a href="giamsat.html">Giám Sát</a> <!-- Các liên kết menu -->
+        <a href="canhbao.html">Điều Chỉnh Cảnh Báo</a>
+        <a href="theodoi.html">Theo Dõi</a>
+        <a href="dieukhien.html">Điều Khiển</a>
+        <a href="xemthem.html">Xem Thêm</a>
+    </div>
+
+    <div class="container"> <!-- Phần chứa nội dung chính của trang -->
+        <div class="top-box">
+            <h1>HURICANGER</h1> <!-- Tiêu đề của trang -->
+        </div>
+        <div id="real-time-clock"></div> <!-- Thẻ div để chứa đồng hồ thời gian thực -->
+        <div class="info-title-container">
+            <h2 class="info-title">Thông tin thành viên</h2> <!-- Tiêu đề thông tin thành viên -->
+        </div>
+        <div class="members"> <!-- Phần hiển thị thông tin thành viên -->
+            <!-- Mỗi thành viên được hiển thị trong một phần tử div -->
+            <div class="member">
+                <img src="/img/anlo.png" alt="Hình ảnh Thành viên 1"> <!-- Hình ảnh thành viên -->
+                <div class="member-info">
+                    <h3>Phan Van Vo</h3> <!-- Tên của thành viên -->
+                    <p>21161219</p> <!-- Thông tin khác của thành viên -->
+                </div>
+            </div>
+            <div class="member">
+                <img src="/img/ak.png" alt="Hình ảnh Thành viên 2">
+                <div class="member-info">
+                    <h3>Pham Duy Khanh</h3>
+                    <p>21161135</p>
+                </div>
+            </div>
+            <div class="member">
+                <img src="./img/logo_nguyen.png" alt="Hình ảnh Thành viên 3">
+                <div class="member-info">
+                    <h3>Nguyen Thanh Long</h3>
+                    <p>21161405</p>
+                </div>
+            </div>
+        </div>
+        
+            <!-- Tương tự cho các thành viên khác -->
+        </div>
+        
+        <div class="group-image">
+            <img src="./img/nhom.jpg" alt="NHÓM"> <!-- Hình ảnh của nhóm -->
+        </div>
+
+        <center> <!-- Canh giữa nội dung -->
+            <!-- Các thông tin khác -->
+            <h4>Điện tử viễn thông k21</h4>
+            <h4>Thực tập IoT</h4>
+            <h4>Address: 1, Vo Van Ngan, Thu Duc City, HCM City</h4>
+        </center>
+    </div>
+    <div class="contact-box"> <!-- Phần liên hệ -->
+        <h2>Thông tin liên hệ</h2> <!-- Tiêu đề phần liên hệ -->
+        <p>
+            <!-- Thông tin liên hệ -->
+            Địa chỉ: 1, Vo Van Ngan, Thu Duc City, HCM City<br>
+            Email: phanvo0001@gmail.com<br>
+            Số điện thoại: 0329900194<br>
+            500k có source code web
+        </p>
+        <!-- Hình ảnh QR Code -->
+        <img src="./img/qr.png" alt="QR Code" class="qr-code">
+        <!-- Hình ảnh Momo -->
+        <img src="./img/momo.png" alt="QR Code" class="qr-code-momo">
+    </div>
+        
+    </div>
+    <!--ĐỒNG HỒ-->
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('real-time-clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // Update immediately to avoid delay
+    </script>
+</body>
+</html>

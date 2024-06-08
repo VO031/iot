@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif; /* Thiết lập font mặc định cho toàn trang là Arial, nếu không có thì dùng sans-serif */
+    margin: 0; /* Bỏ phần margin mặc định của body */
+    padding: 0; /* Bỏ phần padding mặc định của body */
+}
+
+h1 {
+    text-align: center; /* Canh giữa văn bản tiêu đề */
+    margin-top: 20px; /* Thêm khoảng cách margin phía trên là 20px */
+}
+
+.videos-wrapper {
+    display: flex; /* Tạo một container flex cho các thumbnail video */
+    overflow-x: auto; /* Cho phép cuộn ngang nếu nội dung vượt quá chiều rộng container */
+    padding: 10px 0; /* Thêm padding 10px trên và dưới */
+    margin: 0 auto; /* Canh giữa container với margin tự động hai bên */
+    max-width: 1000px; /* Giới hạn chiều rộng tối đa là 1000px */
+}
+
+.video-container {
+    margin-right: 10px; /* Thêm khoảng cách margin phải là 10px */
+    position: relative; /* Đặt vị trí tương đối để có thể sử dụng vị trí tuyệt đối cho các phần tử bên trong */
+    width: 320px; /* Thiết lập chiều rộng của mỗi container video là 320px */
+}
+
+.video-description {
+    position: absolute; /* Đặt vị trí tuyệt đối cho phần mô tả video */
+    bottom: -50px; /* Vị trí cách phía dưới của container 50px */
+    left: 0; /* Căn trái theo container */
+    width: 100%; /* Chiều rộng phủ đầy container */
+    text-align: center; /* Canh giữa văn bản */
+    padding: 10px 0; /* Thêm padding 10px trên và dưới */
+    background-color: rgba(0, 0, 0, 0.7); /* Nền bán trong suốt màu đen */
+    color: white; /* Màu chữ trắng */
+}
+
+.videos-wrapper .video-description span {
+    display: block; /* Hiển thị mỗi span như một phần tử block */
+}
+
+.course-container {
+    display: flex; /* Tạo một container flex cho phần khóa học */
+    flex-wrap: wrap; /* Cho phép bọc dòng nếu không đủ chỗ */
+    justify-content: space-between; /* Giãn đều khoảng cách giữa các phần tử */
+    margin-top: 40px; /* Thêm khoảng cách margin phía trên là 40px */
+    max-width: 1000px; /* Giới hạn chiều rộng tối đa là 1000px */
+    margin-left: auto; /* Canh giữa container với margin tự động hai bên */
+    margin-right: auto; /* Canh giữa container với margin tự động hai bên */
+}
+
+.course-title-container {
+    width: 100%; /* Đảm bảo container tiêu đề khóa học phủ đầy chiều rộng */
+    text-align: center; /* Canh giữa văn bản */
+}
+
+.course-title {
+    margin-bottom: 20px; /* Thêm khoảng cách margin dưới là 20px */
+}
+
+.course-box {
+    width: 30%; /* Thiết lập chiều rộng cố định là 30% cho mỗi hộp khóa học */
+    height: 150px; /* Thiết lập chiều cao là 150px */
+    background-color: #ccc; /* Nền màu xám */
+    margin-bottom: 20px; /* Thêm khoảng cách margin dưới là 20px */
+    display: inline-block; /* Hiển thị như một phần tử inline-block */
+    margin-right: 20px; /* Thêm khoảng cách margin phải là 20px */
+}
+
+.course-box img {
+    width: 100%; /* Đảm bảo hình ảnh phủ đầy chiều rộng */
+    height: 100%; /* Đảm bảo hình ảnh phủ đầy chiều cao */
+    object-fit: cover; /* Sử dụng object-fit để duy trì tỉ lệ */
+    border-radius: 5px; /* Bo tròn các góc của hình ảnh */
+}
+
+.course-box:last-child {
+    margin-right: 0; /* Bỏ khoảng cách margin phải của hộp khóa học cuối cùng để tránh khoảng trống thừa */
+}
+
+.learn-more {
+    background-color: #007bff; /* Nền màu xanh */
+    color: #fff; /* Chữ màu trắng */
+    padding: 10px 20px; /* Thêm padding 10px trên và dưới, 20px hai bên */
+    border: none; /* Bỏ viền */
+    border-radius: 5px; /* Bo tròn các góc */
+    cursor: pointer; /* Con trỏ chuột dạng pointer khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền trong 0.3 giây */
+    text-decoration: none; /* Bỏ gạch chân của liên kết */
+    display: inline-block; /* Hiển thị như một phần tử inline-block */
+    font-size: 16px; /* Kích thước font chữ 16px */
+    font-weight: bold; /* Font chữ đậm */
+    text-transform: uppercase; /* Chữ in hoa */
+    letter-spacing: 1px; /* Khoảng cách giữa các chữ cái là 1px */
+}
+
+.learn-more:hover {
+    background-color: #0056b3; /* Thay đổi màu nền thành xanh đậm hơn khi hover để tạo hiệu ứng thị giác */
+}

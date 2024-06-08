@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Thiết lập font mặc định cho toàn trang */
+    background-color: #000; /* Màu nền đen */
+    margin: 0; /* Bỏ phần margin mặc định của body */
+    padding: 0; /* Bỏ phần padding mặc định của body */
+    position: relative; /* Thiết lập vị trí tương đối */
+    color: #fff; /* Màu chữ trắng */
+}
+
+.container {
+    max-width: 1200px; /* Chiều rộng tối đa là 1200px */
+    margin: 0 auto; /* Canh giữa phần tử */
+    padding: 20px; /* Thêm padding 20px */
+    position: relative; /* Thiết lập vị trí tương đối */
+    transition: filter 0.3s ease, brightness 0.3s ease; /* Hiệu ứng chuyển đổi bộ lọc và độ sáng trong 0.3 giây */
+}
+
+.adjust-alert {
+    margin-top: 20px; /* Thêm margin phía trên là 20px */
+}
+
+.slider-container {
+    margin-bottom: 15px; /* Thêm margin phía dưới là 15px */
+}
+
+.slider-container label {
+    display: block; /* Hiển thị nhãn dưới dạng block */
+    font-size: 18px; /* Kích thước font chữ 18px */
+    color: #fff; /* Màu chữ trắng */
+    margin-bottom: 5px; /* Thêm margin phía dưới là 5px */
+}
+
+.slider-container input[type="range"] {
+    width: 100%; /* Chiều rộng 100% */
+    height: 20px; /* Chiều cao 20px */
+    -webkit-appearance: none; /* Loại bỏ kiểu mặc định trên trình duyệt WebKit */
+    background: #555; /* Màu nền xám */
+    outline: none; /* Bỏ đường viền */
+    opacity: 0.7; /* Độ mờ 0.7 */
+    -webkit-transition: .2s; /* Hiệu ứng chuyển đổi trên trình duyệt WebKit trong 0.2 giây */
+    transition: opacity .2s; /* Hiệu ứng chuyển đổi độ mờ trong 0.2 giây */
+}
+
+.slider-container input[type="range"]:hover {
+    opacity: 1; /* Độ mờ 1 khi hover */
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Loại bỏ kiểu mặc định trên trình duyệt WebKit */
+    appearance: none; /* Loại bỏ kiểu mặc định */
+    width: 20px; /* Chiều rộng 20px */
+    height: 20px; /* Chiều cao 20px */
+    background: #4CAF50; /* Màu nền xanh lá cây */
+    cursor: pointer; /* Con trỏ dạng pointer */
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb:hover {
+    background: #45a049; /* Màu nền xanh lá cây đậm hơn khi hover */
+}
+
+.slider-container input[type="range"]::-moz-range-thumb {
+    width: 20px; /* Chiều rộng 20px */
+    height: 20px; /* Chiều cao 20px */
+    background: #4CAF50; /* Màu nền xanh lá cây */
+    cursor: pointer; /* Con trỏ dạng pointer */
+}

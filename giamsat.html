@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giám Sát</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="giamsat.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+</head>
+<body>
+    <h1>TRẠM GIÁM SÁT</h1>
+    <div id="Chart" class="tabcontent">
+        <div class="chart-container">
+            <div class="column5" id="bieudotemp">
+                <h3>Nhiệt Độ</h3>
+                <canvas id="temperatureChart"></canvas>
+            </div>
+            <div class="column5" id="bieudohumi">
+                <h3>Độ Ẩm</h3>
+                <canvas id="humidityChart"></canvas>
+            </div>
+            <div class="column5" id="bieudogas">
+                <h3>Gas</h3>
+                <canvas id="gasChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="./giamsat.js"></script>
+</body>
+</html>

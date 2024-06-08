@@ -1,0 +1,160 @@
+/* Thiết lập font chữ và padding/margin mặc định cho toàn bộ trang */
+body {
+    font-family: 'Arial', sans-serif; /* Sử dụng font Arial nếu có, nếu không sẽ sử dụng font sans-serif mặc định */
+    margin: 0; /* Loại bỏ margin */
+    padding: 0; /* Loại bỏ padding */
+    color: #333; /* Thiết lập màu chữ cho toàn bộ trang */
+    animation: fadeIn 1s ease-in-out; /* Áp dụng animation "fadeIn" với thời gian 1 giây, hiệu ứng đầu vào từ opacity 0 đến 1 */
+    background-image: linear-gradient(to right, #3494e6, #ec6ead); /* Sử dụng hình nền gradient từ màu xanh đến màu hồng */
+}
+
+/* Thiết lập kích thước và các thuộc tính khác cho vùng chứa */
+.container {
+    max-width: 800px; /* Đặt chiều rộng tối đa là 800px */
+    margin: 40px auto; /* Canh giữa theo chiều ngang, margin 40px từ trên xuống */
+    padding: 20px; /* Thêm padding 20px */
+    background-color: rgba(255, 255, 255, 0.9); /* Đặt màu nền là một màu trắng nhưng có độ trong suốt 90% */
+    border-radius: 15px; /* Bo góc với bán kính là 15px */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng bóng cho vùng chứa */
+    text-align: center; /* Căn giữa nội dung vùng chứa */
+}
+
+/* Định nghĩa animation "fadeIn" */
+@keyframes fadeIn {
+    from { opacity: 0; } /* Bắt đầu với opacity 0 */
+    to { opacity: 1; } /* Kết thúc với opacity 1 */
+}
+
+/* Thiết lập các thuộc tính cho tiêu đề h1 */
+h1 {
+    color: #333; /* Đặt màu chữ cho tiêu đề */
+    font-size: 2.5em; /* Đặt kích thước font chữ */
+    margin-bottom: 30px; /* Thêm margin dưới cho tiêu đề */
+    background: linear-gradient(145deg, #007bff, #00c6ff); /* Sử dụng gradient cho màu nền của tiêu đề */
+    -webkit-background-clip: text; /* Sử dụng chức năng clip nền để áp dụng gradient cho chữ */
+    -webkit-text-fill-color: transparent; /* Làm cho màu chữ trở nên trong suốt */
+}
+
+/* Định dạng cho phần cảnh báo chỉnh sửa */
+.adjust-alert {
+    margin-top: 20px; /* Thêm margin trên */
+    background: linear-gradient(145deg, #e4e4e4, #ffffff); /* Sử dụng gradient cho màu nền */
+    padding: 30px; /* Thêm padding */
+    border-radius: 15px; /* Bo góc */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 1); /* Tạo hiệu ứng bóng */
+}
+
+/* Thiết lập cho vùng chứa thanh trượt */
+.slider-container {
+    margin-bottom: 30px; /* Thêm margin dưới */
+    text-align: left; /* Căn trái nội dung */
+}
+
+/* Thiết lập cho nhãn của thanh trượt */
+.slider-container label {
+    display: block; /* Hiển thị nhãn dưới dạng block */
+    margin-bottom: 10px; /* Thêm margin dưới */
+    color: #666; /* Đặt màu chữ cho nhãn */
+    font-size: 1.2em; /* Đặt kích thước font chữ */
+    font-weight: bold; /* In đậm */
+}
+
+/* Thiết lập cho thanh trượt */
+.slider-container input[type="range"] {
+    width: 100%; /* Đặt chiều rộng bằng 100% */
+    appearance: none; /* Loại bỏ giao diện mặc định */
+    height: 15px; /* Đặt chiều cao */
+    background: #e0e0e0; /* Màu nền */
+    outline: none; /* Loại bỏ đường viền */
+    border-radius: 10px; /* Bo góc */
+    transition: background 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+    box-shadow: inset 5px 5px 10px #cccccc, inset -5px -5px 10px #ffffff; /* Hiệu ứng bóng */
+}
+
+/* Thiết lập cho nút trượt trên trình duyệt Chrome */
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    appearance: none; /* Loại bỏ giao diện mặc định */
+    width: 25px; /* Đặt chiều rộng */
+    height: 25px; /* Đặt chiều cao */
+    background: #007bff; /* Màu nền */
+    border-radius: 50%; /* Bo góc */
+    cursor: pointer; /* Biến con trỏ thành pointer khi di chuột vào */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Hiệu ứng bóng */
+}
+
+/* Thiết lập cho nút trượt trên trình duyệt Firefox */
+.slider-container input[type="range"]::-moz-range-thumb {
+    width: 25px; /* Đặt chiều rộng */
+    height: 25px;
+    background: #007bff; /* Màu nền */
+    border-radius: 50%; /* Bo góc */
+    cursor: pointer; /* Biến con trỏ thành pointer khi di chuột vào */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Hiệu ứng bóng */
+}
+
+/* Hiệu ứng phóng to khi di chuột qua nút trượt */
+.slider-container input[type="range"]:hover::-webkit-slider-thumb,
+.slider-container input[type="range"]:hover::-moz-range-thumb {
+    transform: scale(1.3); /* Phóng to nút trượt khi di chuột qua */
+}
+
+/* Thiết lập cho vùng chứa thiết bị */
+.device-container {
+    display: flex; /* Hiển thị các phần tử con theo chiều ngang */
+    justify-content: space-around; /* Căn các phần tử con theo trục ngang và căn đều khoảng cách giữa chúng */
+    flex-wrap: wrap; /* Cho phép các phần tử con xuống dòng khi không đủ không gian */
+    margin-top: 40px; /* Thêm margin phía trên */
+}
+
+/* Thiết lập cho mỗi thiết bị */
+.device {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Sử dụng gradient cho màu nền của thiết bị */
+    border-radius: 15px; /* Bo góc */
+    padding: 20px; /* Thêm padding */
+    margin: 10px; /* Thêm margin */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 1); /* Hiệu ứng bóng */
+    text-align: center; /* Căn giữa nội dung */
+    flex: 1 1 30%; /* Đặt kích thước của thiết bị, tỷ lệ phần trăm chiều rộng, không giới hạn chiều cao */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+/* Hiệu ứng khi di chuột qua thiết bị */
+.device:hover {
+    transform: translateY(-10px); /* Dịch chuyển lên trên */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 1); /* Hiệu ứng bóng */
+}
+
+/* Thiết lập cho hình ảnh trong thiết bị */
+.device img {
+    max-width: 100px; /* Đặt chiều rộng tối đa */
+    margin-bottom: 20px; /* Thêm margin phía dưới */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+/* Hiệu ứng khi di chuột qua hình ảnh trong thiết bị */
+.device:hover img {
+    transform: rotate(10deg) scale(1.1); /* Quay và phóng to */
+}
+
+/* Thiết lập cho tiêu đề h3 trong thiết bị */
+.device h3 {
+    font-size: 1.5em; /* Đặt kích thước font chữ */
+    color: #333; /* Đặt màu chữ */
+    margin-top: 10px; /* Thêm margin phía trên */
+    margin-bottom: 10px; /* Thêm margin phía dưới */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+/* Hiệu ứng khi di chuột qua tiêu đề h3 trong thiết bị */
+.device:hover h3 {
+    color: #007bff; /* Đổi màu chữ */
+}
+
+/* Thiết lập cho phần số liệu đặc biệt trong thiết bị */
+.device span {
+    font-weight: bold; /* In đậm */
+    font-size: 1.8em; /* Đặt kích thước font chữ */
+    color: #007bff; /* Đặt màu chữ */
+}

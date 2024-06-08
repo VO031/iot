@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANH BAO</title>
+    <link rel="stylesheet" href="canhbao.css">
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-database.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Điều Chỉnh Cảnh Báo</h1>
+        <div class="adjust-alert">
+            <div class="slider-container">
+                <label for="ND">Nhiệt độ cảnh báo:</label>
+                <input type="range" id="ND" min="0" max="100" value="50" class="slider">
+                <span id="NDValue">50</span>
+            </div>
+            <div class="slider-container">
+                <label for="DA">Độ ẩm cảnh báo:</label>
+                <input type="range" id="DA" min="0" max="100" value="50" class="slider">
+                <span id="DAValue">50</span>
+            </div>
+            <div class="slider-container">
+                <label for="KG">Gas cảnh báo:</label>
+                <input type="range" id="KG" min="0" max="100" value="50" class="slider">
+                <span id="KGValue">50</span>
+            </div>
+        </div>
+        <div class="device-container">
+            <div class="device">
+                <img src="./img/hightemperature.png" alt="Temperature">
+                <h3>Nhiệt độ cảnh báo: <span id="nhietdocb">50</span></h3>
+            </div>
+            <div class="device">
+                <img src="./img/doamthap.png" alt="Humidity">
+                <h3>Độ ẩm cảnh báo: <span id="doamcb">50</span></h3>
+            </div>
+            <div class="device">
+                <img src="./img/gas.png" alt="Gas">
+                <h3>GAS cảnh báo: <span id="gascb">50</span></h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDYd5jO14_dVM_VTG0-P0m4uCzYRBqheYg",
+        authDomain: "iot1-5dea0.firebaseapp.com",
+        databaseURL: "https://iot1-5dea0-default-rtdb.firebaseio.com",
+        projectId: "iot1-5dea0",
+        storageBucket: "iot1-5dea0.appspot.com",
+        messagingSenderId: "1092996136822",
+        appId: "1:1092996136822:web:127ffa014f0be36225c457",
+        measurementId: "G-EDQR1Q6543",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="./canhbao.js"></script>
+</body>
+</html>

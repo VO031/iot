@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="xemthem.css"> <!-- Liên kết với tệp CSS để tùy chỉnh kiểu dáng -->
+    <title>Videos + KH</title>
+</head>
+<body>
+    <h1>Videos</h1>
+
+    <!-- Phần chứa các video -->
+    <div class="videos-wrapper">
+        <!-- Mỗi video được đặt trong một phần tử div có class là "video-container" -->
+        <div class="video-container">
+            <!-- iframe để nhúng video từ YouTube -->
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/sw9xDfGtX6s" frameborder="0" allowfullscreen></iframe>
+            <!-- Phần mô tả video -->
+            <div class="video-description"><span>DEMO CUỐI KỲ</span></div>
+        </div>
+
+        <div class="video-container">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/AnSf1DhLFNo" frameborder="0" allowfullscreen></iframe>
+            <div class="video-description"><span>BLYNK VS ESP32</span></div>
+        </div>
+
+        <div class="video-container">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/zLPM-KUouDg" frameborder="0" allowfullscreen></iframe>
+            <div class="video-description"><span>TEST ĐỒ ÁN 1</span></div>
+        </div>
+
+        <div class="video-container">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/zLPM-KUouDg" frameborder="0" allowfullscreen></iframe>
+            <div class="video-description"><span>Mô Phỏng Cadences</span></div>
+        </div>
+
+        <div class="video-container">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/4xgO3Q_jtto" frameborder="0" allowfullscreen></iframe>
+            <div class="video-description"><span>Project Nhúng</span></div>
+        </div>
+    </div>
+
+    <!-- Phần chứa các khóa học -->
+    <div class="course-container">
+        <!-- Tiêu đề khóa học -->
+        <div class="course-title-container">
+            <h2 class="course-title">Khóa học</h2>
+        </div>
+        <!-- Mỗi khóa học được đặt trong một phần tử div có class là "course-box" -->
+        <div class="course-box">
+            <img src="./img/k1.jfif" alt="Image 1"> <!-- Hình ảnh đại diện cho khóa học -->
+            <!-- Nút "Learn More" để chuyển đến video trên YouTube, được kích hoạt bằng JavaScript -->
+            <button class="learn-more" onclick="goToYouTubeVideo('FLvtLvFa054')">Learn More</button>
+        </div>
+        <!-- Tương tự cho các khóa học khác -->
+        <div class="course-box">
+            <img src="./img/k2.jfif" alt="Image 2">
+            <button class="learn-more" onclick="goToCustomLink()">Learn More</button>
+        </div>
+        <div class="course-box">
+            <img src="./img/k3.png" alt="Image 3">
+            <a href="https://fullstack.edu.vn/learning/html-css?id=77ab0605-2aea-410e-85f8-8733c6ddc20f" class="learn-more">Learn More</a>
+        </div>
+    </div>
+    
+    <script src="./xemthem.js"></script> <!-- Liên kết đến tệp JavaScript -->
+</body>
+</html>

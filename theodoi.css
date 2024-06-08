@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif; /* Thiết lập font mặc định cho toàn trang là Arial, nếu không có thì dùng sans-serif */
+    text-align: center; /* Canh giữa văn bản */
+    margin: 0; /* Bỏ phần margin mặc định của body */
+    padding: 0; /* Bỏ phần padding mặc định của body */
+    background-image: url("./img/liv.jpg"); /* Thiết lập ảnh nền */
+    background-size: cover; /* Ảnh nền phủ đầy màn hình */
+    height: 100vh; /* Chiều cao là 100% chiều cao viewport */
+    display: flex; /* Sử dụng flexbox để canh giữa nội dung */
+    align-items: center; /* Canh giữa theo trục dọc */
+    justify-content: center; /* Canh giữa theo trục ngang */
+    color: #fff; /* Màu chữ trắng */
+}
+
+.container {
+    width: 100%; /* Chiều rộng 100% */
+    max-width: 800px; /* Chiều rộng tối đa là 800px */
+    box-sizing: border-box; /* Tính cả padding và border vào tổng chiều rộng và chiều cao */
+    padding: 20px; /* Thêm padding 20px */
+    background-color: rgba(0, 0, 0, 0.6); /* Nền màu đen với độ trong suốt */
+    border-radius: 15px; /* Bo tròn các góc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ */
+    transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi bóng đổ trong 0.3 giây */
+}
+
+h1 {
+    margin-top: 0; /* Bỏ margin phía trên */
+    margin-bottom: 20px; /* Thêm margin phía dưới là 20px */
+    font-size: 36px; /* Kích thước font chữ 36px */
+    color: #ff7f50; /* Màu chữ cam */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Thêm bóng đổ cho chữ */
+    transition: text-shadow 0.3s ease; /* Hiệu ứng chuyển đổi bóng đổ chữ trong 0.3 giây */
+}
+
+.device-container {
+    display: flex; /* Sử dụng flexbox */
+    flex-wrap: wrap; /* Cho phép bọc dòng nếu không đủ chỗ */
+    justify-content: center; /* Canh giữa các phần tử con */
+    gap: 20px; /* Khoảng cách giữa các phần tử con */
+}
+
+.device {
+    flex-basis: calc(33.33% - 20px); /* Chiều rộng là 33.33% trừ đi 20px */
+    padding: 20px; /* Thêm padding 20px */
+    border-radius: 15px; /* Bo tròn các góc */
+    background-color: rgba(255, 255, 255, 0.9); /* Nền màu trắng với độ trong suốt */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi vị trí và bóng đổ trong 0.3 giây */
+    display: flex; /* Sử dụng flexbox cho phần tử con */
+    flex-direction: column; /* Xếp phần tử con theo cột */
+    align-items: center; /* Canh giữa phần tử con theo trục ngang */
+    justify-content: center; /* Canh giữa phần tử con theo trục dọc */
+}
+
+.device:hover {
+    transform: translateY(-5px); /* Di chuyển lên trên 5px khi hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Thêm bóng đổ lớn hơn khi hover */
+}
+
+.device h2 {
+    margin-top: 0; /* Bỏ margin phía trên */
+    font-size: 24px; /* Kích thước font chữ 24px */
+    color: #6c5ce7; /* Màu chữ tím */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu chữ trong 0.3 giây */
+}
+
+.device h3 {
+    margin-top: 8px; /* Thêm margin phía trên là 8px */
+    font-size: 18px; /* Kích thước font chữ 18px */
+    color: #6c5ce7; /* Màu chữ tím */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu chữ trong 0.3 giây */
+}
+
+.button {
+    padding: 12px 24px; /* Thêm padding 12px trên dưới và 24px hai bên */
+    font-size: 18px; /* Kích thước font chữ 18px */
+    border: none; /* Bỏ viền */
+    border-radius: 6px; /* Bo tròn các góc */
+    cursor: pointer; /* Con trỏ dạng pointer khi hover */
+    background-color: #6c5ce7; /* Nền màu tím */
+    color: #fff; /* Màu chữ trắng */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền trong 0.3 giây */
+}
+
+.button:hover {
+    background-color: #4834d4; /* Nền màu tím đậm hơn khi hover */
+    transform: scale(1.1); /* Phóng to 10% khi hover */
+}

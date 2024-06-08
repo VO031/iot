@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dieukhien.css">
+    <title>ĐIỀU KHIỂN</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bedroom Control Panel</h1>
+        <div class="control-container">
+            <div class="device">
+                <img id="fanImg" src="./img/fan_off.png" alt="Fan" class="device-image">
+                <h2>Fan</h2>
+                <button id="fanButton" class="button">Turn On / Off</button>
+                <p class="status">Status: <span id="fanStatus">Off</span></p>
+            </div>
+            <div class="device">
+                <img id="lightImg" src="./img/dennguoff.png" alt="Bedside Lamp" class="device-image">
+                <h2>Bedside Lamp</h2>
+                <button id="lightButton" class="button">Turn On / Off</button>
+                <p class="status">Status: <span id="lightStatus">Off</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDYd5jO14_dVM_VTG0-P0m4uCzYRBqheYg",
+            authDomain: "iot1-5dea0.firebaseapp.com",
+            databaseURL: "https://iot1-5dea0-default-rtdb.firebaseio.com",
+            projectId: "iot1-5dea0",
+            storageBucket: "iot1-5dea0.appspot.com",
+            messagingSenderId: "1092996136822",
+            appId: "1:1092996136822:web:127ffa014f0be36225c457",
+            measurementId: "G-EDQR1Q6543",
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <script src="./dieukhien.js"></script>
+</body>
+</html>

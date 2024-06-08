@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /> <!-- Thiết lập mã hóa ký tự là UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Đảm bảo trang web phản hồi với kích thước màn hình khác nhau -->
+  <link rel="stylesheet" href="theodoi.css"> <!-- Liên kết đến tệp CSS -->
+  <title>BẢNG THEO DÕI</title> <!-- Tiêu đề của trang web -->
+</head>
+<body>
+  <div class="container">
+    <h1>BẢNG THEO DÕI</h1> <!-- Tiêu đề chính của trang web -->
+    <div class="device-container">
+      <div class="device">
+        <h2>Temperature</h2> <!-- Tiêu đề của thiết bị đo nhiệt độ -->
+        <img src="./img/temperature.png" alt="Temperature Image" class="device-image" style="width: 80px; height: 80px;"> <!-- Hình ảnh biểu tượng nhiệt độ -->
+        <h3 style="color: rgb(17, 0, 255)">
+          Temperature: <span id="nhietdo1"></span> <!-- Hiển thị giá trị nhiệt độ -->
+        </h3>
+      </div>
+      <div class="device">
+        <h2>Humidity</h2> <!-- Tiêu đề của thiết bị đo độ ẩm -->
+        <img src="./img/doam.png" alt="Humidity Image" class="device-image" style="width: 80px; height: 80px;"> <!-- Hình ảnh biểu tượng độ ẩm -->
+        <h3 style="color: rgb(17, 0, 255)">
+          Humidity: <span id="doam1"></span> <!-- Hiển thị giá trị độ ẩm -->
+        </h3>
+      </div>
+      <div class="device">
+        <h2>GAS</h2> <!-- Tiêu đề của thiết bị đo khí gas -->
+        <img src="./img/gas-cylinder.png" alt="Gas Image" class="device-image" style="width: 80px; height: 80px;"> <!-- Hình ảnh biểu tượng khí gas -->
+        <h3 style="color: rgb(17, 0, 255)">
+          Gas: <span id="Gas"></span> <!-- Hiển thị giá trị khí gas -->
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thư viện Firebase cho ứng dụng web -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script> <!-- Firebase core SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script> <!-- Firebase Realtime Database SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script> <!-- Firebase Analytics SDK -->
+  <script>
+    // Cấu hình Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDYd5jO14_dVM_VTG0-P0m4uCzYRBqheYg",
+      authDomain: "iot1-5dea0.firebaseapp.com",
+      databaseURL: "https://iot1-5dea0-default-rtdb.firebaseio.com",
+      projectId: "iot1-5dea0",
+      storageBucket: "iot1-5dea0.appspot.com",
+      messagingSenderId: "1092996136822",
+      appId: "1:1092996136822:web:127ffa014f0be36225c457",
+      measurementId: "G-EDQR1Q6543",
+    };
+    // Khởi tạo Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics(); // Khởi tạo Firebase Analytics
+
+  </script>
+  <script src="./script.js"></script> <!-- Liên kết đến tệp JavaScript -->
+</body>
+</html>
