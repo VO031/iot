@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!-- saved from url=(0196)https://thingspeak.com/channels/2572924/charts/2?bgcolor=%23ffffff&color=%23096bf2&dynamic=true&results=60&title=%C4%90%E1%BB%98+%E1%BA%A8M&type=line&xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m&yaxis=%25 -->
+<html style="height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="./jquery.min(1).js.tải xuống" integrity="sha384-EaUkI/FiMJtEXWAl0dCczvbFvjfzsIF1UNKGJvu9p5JIG71Kih7/kQJvYbBL7HOn" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./highcharts-3.0.8.js.tải xuống"></script>
+  <script src="./application-947a9d349bb95b27be418525f549c5fd08506bb57021c89527e0f1b78a77cf4e.js.tải xuống"></script>
+    <script type="text/javascript">
+    // user's timezone offset
+    var myOffset = new Date().getTimezoneOffset();
+
+    // converts date format from JSON
+    function getChartDate(d) {
+      // offset in minutes is converted to milliseconds and subtracted so that chart's x-axis is correct
+      return Date.parse(d) - (myOffset * 60000);
+    }
+
+    $(document).on('page:load ready', function() {
+      // blank array for holding chart data
+      var chartData = [];
+      // variable for the local date in milliseconds
+      var localDate;
+      // variable for the last date added to the chart
+      var last_date;
+      // get the data with a webservice call
+      $.getJSON('https://thingspeak.com/channels/2572924/field/2.json?&amp;offset=0&amp;results=60', function(data) {
+
+          // if no access
+          if (data == '-1') {
+            $('#chart-container').append('This channel is not public.  To embed charts, the channel must be public or a read key must be specified.');
+          }
+
+          // iterate through each feed
+          $.each(data.feeds, function() {
+            var p = new Highcharts.Point();
+            // set the proper values
+            var v = this.field2;
+            p.x = getChartDate(this.created_at);
+            p.y = parseFloat(v);
+            // add location if possible
+            if (this.location) {
+              p.name = this.location;
+            }
+            // if a numerical value exists add it
+            if (!isNaN(parseInt(v))
+                            ) {
+              chartData.push(p);
+            }
+          });
+
+          // specify the chart options
+          var chartOptions = {
+            chart: {
+              renderTo: 'chart-container',
+              defaultSeriesType: "line",
+              backgroundColor: '#ffffff',
+              events: {
+                load: function() {
+                  //if dynamic and no "timeslice" options are set
+                  //   GAK 02/16/2013 Let's try to add the last "average" slice if @chart_attr[:average]
+
+                  var url = 'https://thingspeak.com/channels/2572924/feed/last.json?&amp;offset=0&amp;location=true&amp;results=60';
+                  if ("".length > 0) {
+                    url = 'https://thingspeak.com/channels/2572924/feed/last_average.json?&amp;offset=0&amp;location=true&amp;average=&amp;results=60';
+                  } else if ("".length > 0) {
+                    url = 'https://thingspeak.com/channels/2572924/feed/last_median.json?&amp;offset=0&amp;location=true&amp;median=&amp;results=60';
+                  } else if ("".length > 0) {
+                    url = 'https://thingspeak.com/channels/2572924/feed/last_sum.json?&amp;offset=0&amp;location=true&amp;sum=&amp;results=60';
+                  }
+
+                  if ('true' === 'true' && (''.length < 1)) {
+                    // push data every 15 seconds
+                    setInterval(function() {
+                      // get the data with a webservice call if we're just getting the last channel
+                      $.getJSON(url, function(data) {
+                        // if data exists
+                        if (data && data.field2) {
+
+                          var p = new Highcharts.Point();
+                          // set the proper values
+                          var v = data.field2;
+
+                          p.x = getChartDate(data.created_at);
+                          p.y = parseFloat(v);
+                          // add location if possible
+                          if (data.location) {
+                            p.name = data.location;
+                          }
+                          // get the last date if possible
+                          if (dynamicChart.series[0].data.length > 0) {
+                            last_date = dynamicChart.series[0].data[dynamicChart.series[0].data.length - 1].x;
+                          }
+                          var shift = false; //default for shift
+
+                          //if push is requested in parameters
+                          // then if results is and data.length is < results, shift = false
+                          var results = 60;
+                          if (results && dynamicChart.series[0].data.length + 1 >= results) {
+                            shift = true;
+                          }
+                          // if a numerical value exists and it is a new date, add it
+                          if (!isNaN(parseInt(v)) && (p.x != last_date)
+                                                        ) {
+                            dynamicChart.series[0].addPoint(p, true, shift);
+                          } else {
+                            dynamicChart.series[0].data[dynamicChart.series[0].data.length - 1].update(p);
+                          }
+                        }
+                      });
+
+                    }, 15000);
+                  }
+                }
+              }
+            },
+            title: {
+              text: ''
+            },
+            plotOptions: {
+              line: {
+                color: '#096bf2'
+              },
+              bar: {
+                color: '#096bf2'
+              },
+              column: {
+                color: '#096bf2'
+              },
+              spline: {
+                color: '#096bf2'
+              },
+              series: {
+                marker: {
+                  radius: 3
+                },
+                animation: true,
+                step: false,
+                borderWidth: 0,
+                turboThreshold: 0
+              }
+            },
+            tooltip: {
+              // reformat the tooltips so that local times are displayed
+              formatter: function() {
+                var d = new Date(this.x + (myOffset * 60000));
+                var n = (this.point.name === undefined) ? '' : '<br/>' + this.point.name;
+                return this.series.name + ':<b>' + this.y + '</b>' + n + '<br/>' + d.toDateString() + '<br/>' + d.toTimeString().replace(/\(.*\)/, "");
+              }
+            },
+            xAxis: {
+              type: 'datetime',
+              title: {
+                text: 'test'
+              }
+            },
+            yAxis: {
+              title: {
+                text: ''
+              },
+              min: null ,
+              max: null,
+              startOnTick: false,
+              endOnTick: false
+            },
+            legend: {
+              enabled: false
+            },
+            series: [{
+              name: data.channel.field2
+            }],
+            credits: {
+              text: 'ThingSpeak.com',
+              href: 'https://thingspeak.com/',
+              style: {
+                color: '#D62020'
+              }
+            }
+          };
+
+          // add the data to the chart
+          chartOptions.series[0].data = chartData;
+
+          // set chart labels here so that decoding occurs properly
+          chartOptions.title.text = decodeURIComponent('%C4%90%E1%BB%98%20%E1%BA%A8M');
+          chartOptions.xAxis.title.text = decodeURIComponent('th%E1%BB%9Di%20%C4%91i%E1%BB%83m');
+          chartOptions.yAxis.title.text = decodeURIComponent('%25');
+
+          // draw the chart
+          var dynamicChart = new Highcharts.Chart(chartOptions);
+
+          // end getJSON success
+        })
+        // chained to getjson, on error
+        .fail(function() {
+          $('#chart-container').html('Invalid Chart options');
+        });
+
+    }); // end document.ready
+    </script>
+<style></style></head>
+
+<body style="background-color: #ffffff; height: 100%; margin: 0; padding: 0;">
+  <div id="chart-container" style="width: 425px; height: 225px; display: block; position:absolute; bottom:0; top:0; left:0; right:0; margin: 5px 15px 15px 0; overflow: hidden;" data-highcharts-chart="0"><div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 425px; height: 225px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; touch-action: none;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="425" height="225"><desc>Created with Highcharts 3.0.8</desc><defs><clippath id="highcharts-1"><rect fill="none" x="0" y="0" width="355" height="130"></rect></clippath></defs><rect rx="5" ry="5" fill="#ffffff" x="0" y="0" width="425" height="225"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"><path fill="none" d="M 60 42.5 L 415 42.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 60 115.5 L 415 115.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path></g><g class="highcharts-axis" zIndex="2"><path fill="none" d="M 93.5 170 L 93.5 175" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 200.5 170 L 200.5 175" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 306.5 170 L 306.5 175" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 413.5 170 L 413.5 175" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><text x="237.5" y="203.80000114440918" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#4d759e;font-weight:bold;fill:#4d759e;" zIndex="7" text-anchor="middle" transform="translate(0,0)" visibility="visible"><tspan x="237.5">thời điểm</tspan></text><path fill="none" d="M 60 170.5 L 415 170.5" stroke="#C0D0E0" stroke-width="1" zIndex="7" visibility="visible"></path></g><g class="highcharts-axis" zIndex="2"><text x="28.087499618530273" y="105" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#4d759e;font-weight:bold;fill:#4d759e;" zIndex="7" text-anchor="middle" transform="translate(0,0) rotate(270 28.087499618530273 105)" visibility="visible"><tspan x="28.087499618530273">%</tspan></text></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(60,40) scale(1 1)" clip-path="url(#highcharts-1)"><path fill="none" d="M 3.480392156862745 121.9157836029002 L 185.22828273729095 124.09090909090911 L 190.2028095566966 21.134969325153335 L 194.99967470398065 17.509760178471794 L 199.97420152338628 18.959843837144433 L 204.77106667067034 17.509760178471794 L 209.74559349007598 16.059676519799254 L 214.54245863736 14.609592861126615 L 219.33932378464405 13.15950920245399 L 224.3138506040497 13.15950920245399 L 229.28837742345536 14.609592861126615 L 234.08524257073938 14.609592861126615 L 239.05976939014505 13.15950920245399 L 243.85663453742907 14.609592861126615 L 248.83116135683474 16.059676519799254 L 253.62802650411876 16.059676519799254 L 258.4248916514028 16.059676519799254 L 263.3994184708084 14.609592861126615 L 268.1962836180925 14.609592861126615 L 272.99314876537653 13.15950920245399 L 277.7900139126605 13.15950920245399 L 282.7645407320662 9.534300055772448 L 287.5614058793502 9.534300055772448 L 292.5359326987559 9.534300055772448 L 297.51045951816155 8.084216397099809 L 302.30732466544555 8.084216397099809 L 307.28185148485125 8.084216397099809 L 312.2563783042569 7.359174567763546 L 316.8755817794193 7.359174567763546 L 321.85010859882493 7.359174567763546 L 326.8246354182306 5.9090909090909065 L 331.6215005655146 7.359174567763546 L 336.5960273849203 7.359174567763546 L 341.57055420432596 7.359174567763546 L 346.72274269585324 8.084216397099809 L 351.5196078431373 8.084216397099809" stroke="#096bf2" stroke-width="2" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M -6.519607843137255 121.9157836029002 L 3.480392156862745 121.9157836029002 L 185.22828273729095 124.09090909090911 L 190.2028095566966 21.134969325153335 L 194.99967470398065 17.509760178471794 L 199.97420152338628 18.959843837144433 L 204.77106667067034 17.509760178471794 L 209.74559349007598 16.059676519799254 L 214.54245863736 14.609592861126615 L 219.33932378464405 13.15950920245399 L 224.3138506040497 13.15950920245399 L 229.28837742345536 14.609592861126615 L 234.08524257073938 14.609592861126615 L 239.05976939014505 13.15950920245399 L 243.85663453742907 14.609592861126615 L 248.83116135683474 16.059676519799254 L 253.62802650411876 16.059676519799254 L 258.4248916514028 16.059676519799254 L 263.3994184708084 14.609592861126615 L 268.1962836180925 14.609592861126615 L 272.99314876537653 13.15950920245399 L 277.7900139126605 13.15950920245399 L 282.7645407320662 9.534300055772448 L 287.5614058793502 9.534300055772448 L 292.5359326987559 9.534300055772448 L 297.51045951816155 8.084216397099809 L 302.30732466544555 8.084216397099809 L 307.28185148485125 8.084216397099809 L 312.2563783042569 7.359174567763546 L 316.8755817794193 7.359174567763546 L 321.85010859882493 7.359174567763546 L 326.8246354182306 5.9090909090909065 L 331.6215005655146 7.359174567763546 L 336.5960273849203 7.359174567763546 L 341.57055420432596 7.359174567763546 L 346.72274269585324 8.084216397099809 L 351.5196078431373 8.084216397099809 L 361.5196078431373 8.084216397099809" stroke-linejoin="round" visibility="visible" stroke-opacity="0.0001" stroke="rgb(192,192,192)" stroke-width="22" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(60,40) scale(1 1)" clip-path="none" style=""><path fill="#096bf2" d="M 346 5.084216397099809 C 349.996 5.084216397099809 349.996 11.084216397099809 346 11.084216397099809 C 342.004 11.084216397099809 342.004 5.084216397099809 346 5.084216397099809 Z" visibility="inherit"></path><path fill="#096bf2" d="M 341 4.359174567763546 C 344.996 4.359174567763546 344.996 10.359174567763546 341 10.359174567763546 C 337.004 10.359174567763546 337.004 4.359174567763546 341 4.359174567763546 Z" visibility="inherit"></path><path fill="#096bf2" d="M 336 4.359174567763546 C 339.996 4.359174567763546 339.996 10.359174567763546 336 10.359174567763546 C 332.004 10.359174567763546 332.004 4.359174567763546 336 4.359174567763546 Z" visibility="inherit"></path><path fill="#096bf2" d="M 331 4.359174567763546 C 334.996 4.359174567763546 334.996 10.359174567763546 331 10.359174567763546 C 327.004 10.359174567763546 327.004 4.359174567763546 331 4.359174567763546 Z" visibility="inherit"></path><path fill="#096bf2" d="M 326 2.9090909090909065 C 329.996 2.9090909090909065 329.996 8.909090909090907 326 8.909090909090907 C 322.004 8.909090909090907 322.004 2.9090909090909065 326 2.9090909090909065 Z" visibility="inherit"></path><path fill="#096bf2" d="M 321 4.359174567763546 C 324.996 4.359174567763546 324.996 10.359174567763546 321 10.359174567763546 C 317.004 10.359174567763546 317.004 4.359174567763546 321 4.359174567763546 Z" visibility="inherit"></path><path fill="#096bf2" d="M 316 4.359174567763546 C 319.996 4.359174567763546 319.996 10.359174567763546 316 10.359174567763546 C 312.004 10.359174567763546 312.004 4.359174567763546 316 4.359174567763546 Z" visibility="inherit"></path><path fill="#096bf2" d="M 312 4.359174567763546 C 315.996 4.359174567763546 315.996 10.359174567763546 312 10.359174567763546 C 308.004 10.359174567763546 308.004 4.359174567763546 312 4.359174567763546 Z" visibility="inherit"></path><path fill="#096bf2" d="M 307 5.084216397099809 C 310.996 5.084216397099809 310.996 11.084216397099809 307 11.084216397099809 C 303.004 11.084216397099809 303.004 5.084216397099809 307 5.084216397099809 Z" visibility="inherit"></path><path fill="#096bf2" d="M 302 5.084216397099809 C 305.996 5.084216397099809 305.996 11.084216397099809 302 11.084216397099809 C 298.004 11.084216397099809 298.004 5.084216397099809 302 5.084216397099809 Z" visibility="inherit"></path><path fill="#096bf2" d="M 297 5.084216397099809 C 300.996 5.084216397099809 300.996 11.084216397099809 297 11.084216397099809 C 293.004 11.084216397099809 293.004 5.084216397099809 297 5.084216397099809 Z" visibility="inherit"></path><path fill="#096bf2" d="M 292 6.534300055772448 C 295.996 6.534300055772448 295.996 12.534300055772448 292 12.534300055772448 C 288.004 12.534300055772448 288.004 6.534300055772448 292 6.534300055772448 Z" visibility="inherit"></path><path fill="#096bf2" d="M 287 6.534300055772448 C 290.996 6.534300055772448 290.996 12.534300055772448 287 12.534300055772448 C 283.004 12.534300055772448 283.004 6.534300055772448 287 6.534300055772448 Z" visibility="inherit"></path><path fill="#096bf2" d="M 282 6.534300055772448 C 285.996 6.534300055772448 285.996 12.534300055772448 282 12.534300055772448 C 278.004 12.534300055772448 278.004 6.534300055772448 282 6.534300055772448 Z" visibility="inherit"></path><path fill="#096bf2" d="M 277 10.15950920245399 C 280.996 10.15950920245399 280.996 16.15950920245399 277 16.15950920245399 C 273.004 16.15950920245399 273.004 10.15950920245399 277 10.15950920245399 Z" visibility="inherit"></path><path fill="#096bf2" d="M 272 10.15950920245399 C 275.996 10.15950920245399 275.996 16.15950920245399 272 16.15950920245399 C 268.004 16.15950920245399 268.004 10.15950920245399 272 10.15950920245399 Z" visibility="inherit"></path><path fill="#096bf2" d="M 268 11.609592861126615 C 271.996 11.609592861126615 271.996 17.609592861126615 268 17.609592861126615 C 264.004 17.609592861126615 264.004 11.609592861126615 268 11.609592861126615 Z" visibility="inherit"></path><path fill="#096bf2" d="M 263 11.609592861126615 C 266.996 11.609592861126615 266.996 17.609592861126615 263 17.609592861126615 C 259.004 17.609592861126615 259.004 11.609592861126615 263 11.609592861126615 Z" visibility="inherit"></path><path fill="#096bf2" d="M 258 13.059676519799254 C 261.996 13.059676519799254 261.996 19.059676519799254 258 19.059676519799254 C 254.004 19.059676519799254 254.004 13.059676519799254 258 13.059676519799254 Z" visibility="inherit"></path><path fill="#096bf2" d="M 253 13.059676519799254 C 256.996 13.059676519799254 256.996 19.059676519799254 253 19.059676519799254 C 249.004 19.059676519799254 249.004 13.059676519799254 253 13.059676519799254 Z" visibility="inherit"></path><path fill="#096bf2" d="M 248 13.059676519799254 C 251.996 13.059676519799254 251.996 19.059676519799254 248 19.059676519799254 C 244.004 19.059676519799254 244.004 13.059676519799254 248 13.059676519799254 Z" visibility="inherit"></path><path fill="#096bf2" d="M 243 11.609592861126615 C 246.996 11.609592861126615 246.996 17.609592861126615 243 17.609592861126615 C 239.004 17.609592861126615 239.004 11.609592861126615 243 11.609592861126615 Z" visibility="inherit"></path><path fill="#096bf2" d="M 239 10.15950920245399 C 242.996 10.15950920245399 242.996 16.15950920245399 239 16.15950920245399 C 235.004 16.15950920245399 235.004 10.15950920245399 239 10.15950920245399 Z" visibility="inherit"></path><path fill="#096bf2" d="M 234 11.609592861126615 C 237.996 11.609592861126615 237.996 17.609592861126615 234 17.609592861126615 C 230.004 17.609592861126615 230.004 11.609592861126615 234 11.609592861126615 Z" visibility="inherit"></path><path fill="#096bf2" d="M 229 11.609592861126615 C 232.996 11.609592861126615 232.996 17.609592861126615 229 17.609592861126615 C 225.004 17.609592861126615 225.004 11.609592861126615 229 11.609592861126615 Z" visibility="inherit"></path><path fill="#096bf2" d="M 224 10.15950920245399 C 227.996 10.15950920245399 227.996 16.15950920245399 224 16.15950920245399 C 220.004 16.15950920245399 220.004 10.15950920245399 224 10.15950920245399 Z" visibility="inherit"></path><path fill="#096bf2" d="M 219 10.15950920245399 C 222.996 10.15950920245399 222.996 16.15950920245399 219 16.15950920245399 C 215.004 16.15950920245399 215.004 10.15950920245399 219 10.15950920245399 Z" visibility="inherit"></path><path fill="#096bf2" d="M 214 11.609592861126615 C 217.996 11.609592861126615 217.996 17.609592861126615 214 17.609592861126615 C 210.004 17.609592861126615 210.004 11.609592861126615 214 11.609592861126615 Z" visibility="inherit"></path><path fill="#096bf2" d="M 209 13.059676519799254 C 212.996 13.059676519799254 212.996 19.059676519799254 209 19.059676519799254 C 205.004 19.059676519799254 205.004 13.059676519799254 209 13.059676519799254 Z" visibility="inherit"></path><path fill="#096bf2" d="M 204 14.509760178471794 C 207.996 14.509760178471794 207.996 20.509760178471794 204 20.509760178471794 C 200.004 20.509760178471794 200.004 14.509760178471794 204 14.509760178471794 Z" visibility="inherit"></path><path fill="#096bf2" d="M 199 15.959843837144433 C 202.996 15.959843837144433 202.996 21.959843837144433 199 21.959843837144433 C 195.004 21.959843837144433 195.004 15.959843837144433 199 15.959843837144433 Z" visibility="inherit"></path><path fill="#096bf2" d="M 194 14.509760178471794 C 197.996 14.509760178471794 197.996 20.509760178471794 194 20.509760178471794 C 190.004 20.509760178471794 190.004 14.509760178471794 194 14.509760178471794 Z" visibility="inherit"></path><path fill="#096bf2" d="M 190 18.134969325153335 C 193.996 18.134969325153335 193.996 24.134969325153335 190 24.134969325153335 C 186.004 24.134969325153335 186.004 18.134969325153335 190 18.134969325153335 Z" visibility="inherit"></path><path fill="#096bf2" d="M 185 121.09090909090911 C 188.996 121.09090909090911 188.996 127.09090909090911 185 127.09090909090911 C 181.004 127.09090909090911 181.004 121.09090909090911 185 121.09090909090911 Z" visibility="inherit"></path><path fill="#096bf2" d="M 3 118.9157836029002 C 6.996 118.9157836029002 6.996 124.9157836029002 3 124.9157836029002 C -0.996 124.9157836029002 -0.996 118.9157836029002 3 118.9157836029002 Z" visibility="inherit"></path><path fill="#096bf2" d="M 351 5.084216397099809 C 354.996 5.084216397099809 354.996 11.084216397099809 351 11.084216397099809 C 347.004 11.084216397099809 347.004 5.084216397099809 351 5.084216397099809 Z"></path></g></g><text x="213" y="25" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:16px;color:#274b6d;fill:#274b6d;" text-anchor="middle" class="highcharts-title" zIndex="4"><tspan x="213">ĐỘ ẨM</tspan></text><g class="highcharts-axis-labels" zIndex="7"><text x="94.03819976178323" y="184" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" text-anchor="middle" opacity="1"><tspan x="94.03819976178323">9. Jun</tspan></text><text x="200.63520303476164" y="184" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" text-anchor="middle" opacity="1"><tspan x="200.63520303476164">00:10</tspan></text><text x="307.23220630774006" y="184" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" text-anchor="middle" opacity="1"><tspan x="307.23220630774006">00:20</tspan></text><text x="413.8292095807185" y="184" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" text-anchor="middle" opacity="1"><tspan x="413.8292095807185">00:30</tspan></text></g><g class="highcharts-axis-labels" zIndex="7"><text x="52" y="118.38806412383559" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" text-anchor="end" opacity="1"><tspan x="52">70</tspan></text><text x="52" y="45.883881190204775" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" text-anchor="end" opacity="1"><tspan x="52">80</tspan></text></g><g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;white-space:nowrap;" transform="translate(0,-999)"><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="16" height="16" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="16" height="16" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="none" x="0.5" y="0.5" width="16" height="16" fill-opacity="0.85" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></rect><rect rx="3" ry="3" fill="rgb(255,255,255)" x="0.5" y="0.5" width="16" height="16" fill-opacity="0.85"></rect><text x="8" y="21" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#333333;fill:#333333;" zIndex="1"></text></g><text x="415" y="220" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:9px;cursor:pointer;color:#D62020;fill:#D62020;" text-anchor="end" zIndex="8"><tspan x="415">ThingSpeak.com</tspan></text></svg></div></div>
+
+
+
+</body><div class="corom-element" en2vi-version="3" style="position: absolute; top: 0px; left: 0px; right: 0px; height: 0px; margin: 0px; text-align: left; z-index: 2147483647; pointer-events: none; border: none; display: block;"><template shadowrootmode="open"><style>@import "chrome-extension://gfgbmghkdjckppeomloefmbphdfmokgd/css/common.css";
+@import "chrome-extension://gfgbmghkdjckppeomloefmbphdfmokgd/css/style.css";</style><style id="svelte-7xscto">.toast-container.svelte-7xscto{position:fixed;pointer-events:none;width:100%;height:100%;display:flex;flex-direction:column-reverse;align-items:center;z-index:1000;bottom:0;padding:16px}</style>   <div class="toast-container svelte-7xscto"></div></template></div></html>

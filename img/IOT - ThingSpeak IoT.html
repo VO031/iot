@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://thingspeak.com/channels/2572924/private_show -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" async="" src="./IOT - ThingSpeak IoT_files/htZ.js.tải xuống" crossorigin="anonymous"></script><script type="text/javascript" src="./IOT - ThingSpeak IoT_files/satelliteLib-c70de708e9cd05573175cb144bac6233555f70e5.js.tải xuống" integrity="sha384-FHIghZStVUwH7KBgzTjFuxxk5zPLiKRZ5QIUvFlJYNUc6qZ+SQquvgaixgB9MaIK" crossorigin="anonymous"></script><script src="./IOT - ThingSpeak IoT_files/AppMeasurement.min.js.tải xuống" async=""></script>
+
+  <link href="./IOT - ThingSpeak IoT_files/css" rel="stylesheet" type="text/css">
+  <link href="./IOT - ThingSpeak IoT_files/css(1)" rel="stylesheet" type="text/css">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IOT - ThingSpeak IoT</title>  
+    <meta name="description" content="IOT on ThingSpeak. ThingSpeak is the open IoT platform with MATLAB analytics.">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://thingspeak.com/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://thingspeak.com/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://thingspeak.com/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://thingspeak.com/manifest.json">
+  <link rel="mask-icon" href="https://thingspeak.com/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- alt url handling for css link and script tags onerror handler -->
+  <script type="application/javascript">
+    function tryCssAltUrl(linkEl, altUrl) {
+      linkEl.removeAttribute('onerror');  // avoid infinite loop if alt url also error
+      linkEl.href=altUrl;
+    }
+    function tryJsAltUrl(altUrl, integrity) {
+      const script=document.createElement('script');
+      script.src=altUrl;
+      if (integrity) {
+        script.integrity=integrity;
+        script.crossOrigin='anonymous';
+      }
+      document.head.appendChild(script);
+    }
+  </script>
+
+  <link rel="stylesheet" href="./IOT - ThingSpeak IoT_files/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" onerror="tryCssAltUrl(this,&#39;/bootstrap@5.2.2/dist/css/bootstrap.min.css&#39;);">
+  <link rel="stylesheet" href="./IOT - ThingSpeak IoT_files/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" onerror="tryCssAltUrl(this,&#39;/font-awesome-4.7.0/css/font-awesome.min.css&#39;);">
+  <link rel="stylesheet" media="screen" href="./IOT - ThingSpeak IoT_files/bootstrap_overrides-5d46466756b428fae0d93ad46104e13b7b31fd7be18274befd54f58875848f28.css" data-turbolinks-track="reload">
+  <link rel="stylesheet" media="screen" href="./IOT - ThingSpeak IoT_files/application-797dfe34a3c3aa263b75d714390c956b3ef6355659bb98d03659001e377515fb.css" data-turbolinks-track="reload">
+
+  <script type="text/javascript" src="./IOT - ThingSpeak IoT_files/jquery.min(1).js.tải xuống" integrity="sha384-EaUkI/FiMJtEXWAl0dCczvbFvjfzsIF1UNKGJvu9p5JIG71Kih7/kQJvYbBL7HOn" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./IOT - ThingSpeak IoT_files/bootstrap.bundle.min.js.tải xuống" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous" onerror="tryJsAltUrl(&#39;/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&#39;,&#39;sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3&#39;);"></script>
+  <script type="text/javascript" src="./IOT - ThingSpeak IoT_files/jquery.tablesorter.combined.min.js.tải xuống" integrity="sha384-cfN+2tMN63B5BOlY4cbvyOdOpp2v+DGGmz1ZxHfGNNq0uPIFdS4R53iurgbTOgLu" crossorigin="anonymous"></script>
+  <script src="./IOT - ThingSpeak IoT_files/application-947a9d349bb95b27be418525f549c5fd08506bb57021c89527e0f1b78a77cf4e.js.tải xuống" data-turbolinks-track="reload"></script>
+  <script type="text/javascript" src="./IOT - ThingSpeak IoT_files/clipboard.min.js.tải xuống" integrity="sha384-CUdYwYFu8WmBI8h257c5rCd1GQX0KL+zSYV6kyRNY2thW7QqQymKGfTCI1WHwzvy" crossorigin="anonymous"></script>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="Yya3ZdeyFqHB/r32Pgoc4CBI8ncLa9LBJmuoHb9RBQXdg0njCdr91RCW5J+k9n2lsCZpEWh0bCdBPuebcENWWg==">
+
+  
+  <!-- Qualaroo for thingspeak.com -->
+  <script src="./IOT - ThingSpeak IoT_files/ts_qualaroo_loader-36e56e29a01d4ad7a1ada41d2aef3275308d3a3644040a01e12139d34997bd00.js.tải xuống" defer="defer"></script>
+  <!-- Set default mwa_SID cookie on any page visit !-->
+  <script src="./IOT - ThingSpeak IoT_files/sso_cookie_check-f8b1eba42d88a4157f9a740517d7ffad64cfb3d599f76006804a1ba21eccaa35.js.tải xuống" defer="defer"></script>
+  
+  
+<style type="text/css" id="ki-dp_-d4k"></style><style type="text/css" id="ki-dp_-dtj"></style><style>.--savior-overlay-transform-reset {
+  transform: none !important;
+}
+.--savior-overlay-z-index-top {
+  z-index: 2147483643 !important;
+}
+.--savior-overlay-position-relative {
+  position: relative;
+}
+.--savior-overlay-position-static {
+  position: static !important;
+}
+.--savior-overlay-overflow-hidden {
+  overflow: hidden !important;
+}
+.--savior-overlay-overflow-x-visible {
+  overflow-x: visible !important;
+}
+.--savior-overlay-overflow-y-visible {
+  overflow-y: visible !important;
+}
+.--savior-overlay-z-index-reset {
+  z-index: auto !important;
+}
+.--savior-overlay-display-none {
+  display: none !important;
+}
+.--savior-overlay-clearfix {
+  clear: both;
+}
+.--savior-overlay-reset-filter {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+.--savior-tooltip-host {
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+}
+/*Override css styles for Twitch.tv*/
+main.--savior-overlay-z-index-reset {
+  z-index: auto !important;
+}
+.modal__backdrop.--savior-overlay-z-index-reset {
+  position: static !important;
+}
+main.--savior-overlay-z-index-top {
+  z-index: auto !important;
+}
+main.--savior-overlay-z-index-top .channel-root__player-container + div,
+main.--savior-overlay-z-index-top .video-player-hosting-ui__container + div {
+  opacity: 0.1;
+}
+/*Dirty hack for facebook big video page e.g: https://www.facebook.com/abc/videos/...*/
+.--savior-backdrop {
+  position: fixed !important;
+  z-index: 2147483642 !important;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw !important;
+  background-color: rgba(0,0,0,0.9);
+}
+.--savior-overlay-twitter-video-player {
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+}
+.--savior-overlay-z-index-reset [class*="DivSideNavContainer"],
+.--savior-overlay-z-index-reset [class*="DivHeaderContainer"],
+.--savior-overlay-z-index-reset [class*="DivBottomContainer"],
+.--savior-overlay-z-index-reset [class*="DivCategoryListWrapper"],
+.--savior-overlay-z-index-reset [data-testid="sidebarColumn"],
+.--savior-overlay-z-index-reset header[role="banner"],
+.--savior-overlay-z-index-reset [data-testid="cellInnerDiv"]:not(.--savior-overlay-z-index-reset),
+.--savior-overlay-z-index-reset [aria-label="Home timeline"]>div:first-child,
+.--savior-overlay-z-index-reset [aria-label="Home timeline"]>div:nth-child(3) {
+  z-index: -1 !important;
+}
+.--savior-overlay-z-index-reset [data-testid="cellInnerDiv"] .--savior-backdrop+div {
+  z-index: 2147483643 !important;
+}
+.--savior-overlay-z-index-reset [data-testid="primaryColumn"]>[aria-label="Home timeline"] {
+  z-index: 0 !important;
+}
+.--savior-overlay-z-index-reset#mtLayer,
+.--savior-overlay-z-index-reset.media-layer {
+  z-index: 3000 !important;
+}
+.--savior-overlay-position-relative [class*="SecBar_secBar_"],
+.--savior-overlay-position-relative .woo-box-flex [class*="Frame_top_"] {
+  z-index: 0 !important;
+}
+.--savior-overlay-position-relative .vue-recycle-scroller__item-view:not(.--savior-overlay-z-index-reset),
+.--savior-overlay-position-relative .woo-panel-main[class*="BackTop_main_"],
+.--savior-overlay-position-relative [class*="Main_side_"] {
+  z-index: -1 !important;
+}
+/* Fix conflict css with zingmp3 */
+.zm-video-modal.--savior-overlay-z-index-reset {
+  position: absolute;
+}
+/* Dirty hack for xvideos99 */
+#page #main.--savior-overlay-z-index-reset {
+  z-index: auto !important;
+}
+/* Overlay for ok.ru */
+#vp_w.--savior-overlay-z-index-reset.media-layer.media-layer__video {
+  overflow-y: hidden;
+  z-index: 2147483643 !important;
+}
+/* Fix missing controller for tv.naver.com */
+.--savior-overlay-z-index-top.rmc_controller,
+.--savior-overlay-z-index-top.rmc_setting_intro,
+.--savior-overlay-z-index-top.rmc_highlight,
+.--savior-overlay-z-index-top.rmc_control_settings {
+  z-index: 2147483644 !important;
+}
+/* Dirty hack for douyi.com */
+.swiper-wrapper.--savior-overlay-z-index-reset .swiper-slide:not(.swiper-slide-active),
+.swiper-wrapper.--savior-overlay-transform-reset .swiper-slide:not(.swiper-slide-active) {
+  display: none;
+}
+.videoWrap + div > div {
+  pointer-events: unset;
+}
+/* Dirty hack for fpt.ai */
+.mfp-wrap.--savior-overlay-z-index-top {
+  position: relative;
+}
+.mfp-wrap.--savior-overlay-z-index-top .mfp-close {
+  display: none;
+}
+.mfp-wrap.--savior-overlay-z-index-top .mfp-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset + nav {
+  z-index: -1 !important;
+}
+section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset section.--savior-overlay-z-index-reset div.--savior-overlay-z-index-reset ~ div {
+  position: relative;
+}
+div[class^="tiktok"].--savior-overlay-z-index-reset {
+  z-index: 2147483644 !important;
+}
+.--savior-lightoff-fix section:not(:has([class*="--savior-overlay-"])),
+.--savior-lightoff-fix section.section_video ~ section {
+  z-index: -1;
+  position: relative;
+}
+.--savior-lightoff-fix header,
+.--savior-lightoff-fix footer,
+.--savior-lightoff-fix .top-header,
+.--savior-lightoff-fix .swiper-container,
+.--savior-lightoff-fix #to_top,
+.--savior-lightoff-fix #button-adblock {
+  z-index: -1 !important;
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style></head>
+
+  
+  <body style="" class="">
+    <div id="wrap">
+      <nav class="navbar fixed-top navbar-expand-lg ts-navbar mb-4" style="">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="https://thingspeak.com/">
+        <img style="padding: 0 8px; margin-top: 7px;" id="nav-thingspeak-logo" data-turbolinks="false" src="./IOT - ThingSpeak IoT_files/thingspeak_logo_white-ef4990033a96773df16f2a98e7d72e06f1f497d026145ebbcce1aa9d974e9015.png" width="200" height="35">
+</a>    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" data-turbolinks="false">
+      <ul class="navbar-nav ms-auto mb-lg-0 d-lg-none d-xl-none sign-in-nav">
+          <li class="dropdown">
+    <a href="https://thingspeak.com/channels/2572924/private_show#" title="vo" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown" data-bs-toggle="dropdown" id="nav-account">
+      <div class="sign-in-display d-inline">
+        <img class="user-image" onerror="this.src=&#39;/assets/ico-header-account-active-a8b7d1aca3b339fa3ab2e532f542108ebc26f8e6c0cfd66e1b550bc088a6ad98.svg&#39;;" src="./IOT - ThingSpeak IoT_files/34209701_1717864987091_DEF.jpg" width="25" height="25">
+      </div>
+      <div class="d-inline">
+        <span class="sign-in-display sign-in-name">vo<b class="caret"></b></span>
+      </div>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-account">
+      <li><a id="nav-my-account" data-turbolinks="false" class="dropdown-item" href="https://thingspeak.com/account">My Account</a></li>
+      <li><a id="nav-edit-account" data-turbolinks="false" class="dropdown-item" href="https://thingspeak.com/account/profile">My Profile</a></li>
+      <li><a id="nav-sign-out" data-turbolinks="false" onclick="setSIDCookie()" class="dropdown-item" href="https://thingspeak.com/logout">Sign Out</a></li>
+    </ul>
+  </li>
+
+      </ul>
+      <ul class="navbar-nav me-auto mb-lg-0">
+          <li class="active dropdown">
+            <a class="nav-link dropdown-toggle" href="https://thingspeak.com/channels/2572924/private_show#" id="nav-channels" data-bs-toggle="dropdown" aria-expanded="false">
+              Channels <strong class="caret"></strong>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="nav-channels">
+              <li><a id="nav-my-channels" class="dropdown-item" href="https://thingspeak.com/channels">My Channels</a></li>
+              <li><a id="nav-public-channels" class="dropdown-item" href="https://thingspeak.com/image_channels">My Image Channels</a></li>
+              <li><a id="nav-watched-channels" class="dropdown-item" href="https://thingspeak.com/channels/watched">Watched Channels</a></li>
+              <li><a id="nav-public-channels" class="dropdown-item" href="https://thingspeak.com/channels/public">Public Channels</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="https://thingspeak.com/channels/2572924/private_show#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="nav-apps">Apps <b class="caret"></b></a>
+            <ul class="dropdown-menu" aria-labelledby="nav-apps">
+              <li><a id="nav-apps-all" class="dropdown-item" href="https://thingspeak.com/apps">All Apps</a></li>
+                <li><a id="nav-matlab-analysis-app" class="dropdown-item" href="https://thingspeak.com/apps/matlab_analyses">MATLAB Analysis</a></li>
+                <li><a id="nav-matlab-visualizations-app" class="dropdown-item" href="https://thingspeak.com/apps/matlab_visualizations">MATLAB Visualizations</a></li>
+              <li><a id="nav-plugins-app" class="dropdown-item" href="https://thingspeak.com/apps/plugins">Plugins</a></li>
+              <li><a id="nav-thingtweet-app" class="dropdown-item" href="https://thingspeak.com/apps/thingtweets">ThingTweet</a></li>
+              <li><a id="nav-timecontrols-app" class="dropdown-item" href="https://thingspeak.com/apps/timecontrols">TimeControl</a></li>
+              <li><a id="nav-react-app" class="dropdown-item" href="https://thingspeak.com/apps/reacts">React</a></li>
+              <li><a id="nav-talkback-app" class="dropdown-item" href="https://thingspeak.com/apps/talkbacks">TalkBack</a></li>
+              <li><a id="nav-thinghttp-app" class="dropdown-item" href="https://thingspeak.com/apps/thinghttp">ThingHTTP</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="https://thingspeak.com/channels/2572924/private_show#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false" id="nav-mqtt">Devices<strong class="caret"></strong></a>
+            <ul class="dropdown-menu" aria-labelledby="nav-mqtt">
+              <li><a class="dropdown-item" href="https://thingspeak.com/devices/mqtt">MQTT</a></li>
+            </ul>
+          </li>
+        <li class="dropdown">
+          <a href="https://thingspeak.com/channels/2572924/private_show#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false" id="nav-support">Support<b class="caret"></b></a>
+          <ul class="dropdown-menu" aria-labelledby="nav-support">
+            <li><a href="https://www.mathworks.com/help/thingspeak/" target="_blank" rel="noopener noreferrer" id="nav-support-doc" class="dropdown-item">Documentation</a></li>
+            <li><a href="https://www.mathworks.com/help/thingspeak/getting-started-with-thingspeak.html" target="_blank" rel="noopener noreferrer" id="nav-support-tutorials" class="dropdown-item">Tutorials</a></li>
+            <li><a href="https://www.mathworks.com/help/thingspeak/examples.html" target="_blank" rel="noopener noreferrer" id="nav-support-examples" class="dropdown-item">Examples</a></li>
+            <li><a href="https://www.mathworks.com/matlabcentral/topics/thingspeak.html" target="_blank" rel="noopener noreferrer" id="nav-support-forum" class="dropdown-item">Community Support</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="ms-auto d-sm-none d-md-block">
+        <ul class="navbar-nav me-auto">
+          <span class="navbar-nav d-none d-lg-block">
+            <li class="dropdown"><a id="commercial-learn-more-nav" class="nav-link" href="https://thingspeak.com/pages/commercial_learn_more">Commercial Use</a></li>
+          </span>
+          <li class="dropdown"><a id="nav-sign-in" class="nav-link" href="https://thingspeak.com/prices">How to Buy</a></li>
+          <div class="d-none d-lg-block user-nav">
+              <li class="dropdown">
+    <a href="https://thingspeak.com/channels/2572924/private_show#" title="vo" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown" data-bs-toggle="dropdown" id="nav-account">
+      <div class="sign-in-display d-inline">
+        <img class="user-image" onerror="this.src=&#39;/assets/ico-header-account-active-a8b7d1aca3b339fa3ab2e532f542108ebc26f8e6c0cfd66e1b550bc088a6ad98.svg&#39;;" src="./IOT - ThingSpeak IoT_files/34209701_1717864987091_DEF.jpg" width="25" height="25">
+      </div>
+      <div class="d-inline">
+        <span class="sign-in-display sign-in-name">vo<b class="caret"></b></span>
+      </div>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-account">
+      <li><a id="nav-my-account" data-turbolinks="false" class="dropdown-item" href="https://thingspeak.com/account">My Account</a></li>
+      <li><a id="nav-edit-account" data-turbolinks="false" class="dropdown-item" href="https://thingspeak.com/account/profile">My Profile</a></li>
+      <li><a id="nav-sign-out" data-turbolinks="false" onclick="setSIDCookie()" class="dropdown-item" href="https://thingspeak.com/logout">Sign Out</a></li>
+    </ul>
+  </li>
+
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<link rel="stylesheet" media="screen" href="./IOT - ThingSpeak IoT_files/navbar-279cadce7ede1bf9bb78c10bb0584b17df1fc8b95476f73533024ab6a5d41748.css" data-turbolinks-track="reload">
+
+      <div class="container">
+        
+            <script>
+//<![CDATA[
+let is_local_env = false
+//]]>
+</script>
+
+<script src="./IOT - ThingSpeak IoT_files/dotcom_embedded_status.js.tải xuống"></script>
+<script>
+try {
+  MWEmbeddedStatus.initialize({
+    clientString: "TSPK", 
+    embeddedEndpoint: "https://login.mathworks.com/embedded-login/",
+    logout: function(){
+      window.location.href = "/logout";
+    },
+    synced: function(){
+      redirectToEmbeddedLogin();
+    },
+    handle3PCookieDisabled: function(){
+      redirectToEmbeddedLogin();
+    }
+  });
+
+  MWEmbeddedStatus.prototype.logout = function(){
+    if (is_local_env){
+      document.cookie = "mwa_SID=;path=/";
+    }
+    else {
+      document.cookie = "mwa_SID=;path=/;secure";
+    }
+    MWEmbeddedStatus.instance.config.logout();
+  };
+
+  // to enable SSO in local development and test environments
+  if (is_local_env){
+    MWEmbeddedStatus.prototype.redirectToSSO = function(tx){
+      var port = window.location.port === "" ? "" : ":"+ window.location.port;
+      window.location.href = window.location.protocol + "//" + location.hostname + port + "/login/mwa-sso?uri=" + encodeURIComponent(window.location.href) + "&tx_id=" + tx;
+    };
+  }
+} catch (error) {
+  // pages with links that don't have turbolinks disabled won't load the SSO Status API,
+  // or for browsers that don't allow 3p cookies by default, render embedded login form
+  if (typeof MWEmbeddedStatus === "undefined"){
+    window.location.replace("/login" + "?skipSSOCheck=true");
+  }
+}
+
+function redirectToEmbeddedLogin(){
+  let skipSSOCheckPath = "/login/mwa-sso/check";
+  // redirect the user to embedded login page if a synced event is received and the current pathname points to /login/mwa-sso/check
+  if (window.location.pathname === skipSSOCheckPath) {
+    window.location.replace("/login" + "?skipSSOCheck=true"); 
+  }
+}
+</script>
+
+        <div class="row">
+  <div id="invalid_widget_parameter" class="alert alert-danger alert-dismissable" style="display:none; clear:both">
+	<span id="invalid_widget_parameter_close" class="dismiss"><i class="fa fa-close"></i></span>
+	<a href="https://www.mathworks.com/help/thingspeak/channel_display_widgets.html" target="_blank" rel="noopener noreferrer" data-turbolinks="false" id="widget_param_doc" class="exhaustion_alert">Widget Documentation</a>
+	<span id="widget-config-err-msg">
+	</span>
+</div>
+
+<div id="invalid_widget_type" class="alert alert-danger alert-dismissable" style="display:none; clear:both">
+	<span id="invalid_widget_type_close" class="dismiss"><i class="fa fa-close"></i></span>
+	<span>
+		You have selected an invalid widget to be created. Please select a valid widget to be created.
+	</span>
+</div>
+      <div id="exhaustion_div">
+
+  <div class="alert alert-danger alert-dismissible expiration_reminder" style="display:none; clear:both" role="alert">
+    <span>
+      License <strong><span name="license_id_val_expire" id="license_id_val_expire"></span></strong>
+       will expire at the end of 
+      <strong><span name="expiration_date" id="expiration_date"></span></strong>.
+    </span>
+    <span>
+      <a data-turbolinks="false" id="call_of_action_to_expire" class="exhaustion_alert"> Buy a new license
+      </a>
+    </span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="alert alert-danger alert-dismissible exhaustion_reminder" style="display:none; clear:both" role="alert">
+    <span>
+      Based on your current daily usage rate,
+        you
+      will run out of messages on:  
+      <strong><span name="exp_expiration_date" id="exp_expiration_date"></span></strong>.
+    </span>
+    <span>
+        <a data-turbolinks="false" id="call_of_action_exhaust" class="exhaustion_alert" href="https://thingspeak.com/prices"> Buy a new license
+      </a>
+    </span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="alert alert-danger alert-dismissible shutoff_expiration_alert" style="display:none; clear:both" role="alert">
+      <span>
+        Your term  has expired at the end of <strong><span name="shut_off_date_exp" id="shut_off_date_exp"></span></strong>.
+        </span>
+        <span>
+        <a data-turbolinks="false" id="call_of_action_expire" class="exhaustion_alert"> Buy a new license</a>
+      </span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="alert alert-danger alert-dismissible shutoff_alert" style="display:none; clear:both" role="alert">
+      <span>
+        You have run out of messages as of: <strong><span name="shut_off_date" id="shut_off_date"></span></strong>.
+      </span>
+      <span>
+        <a data-turbolinks="false" id="call_of_action_shutoff" class="exhaustion_alert"> Buy a new license</a>
+      </span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+</div>
+
+    <div class="channel-pages">
+      <h1 id="channel-name-header">IOT</h1>
+      <!-- Show Channel meta data only when a channel is public or is the user's private channel, g1368777, the parentheses are redundant, since && precedes ||, but they don't hurt-->
+      <!-- myChannel? is a  helper method -->
+        <div class="row">
+  <div class="col-sm-4">
+    <ul class="no-bullets" id="table-channel-metadata">
+      <li>Channel ID: <strong id="channel-metadata-id">2572924</strong></li>
+      <li>Author: <a target="_blank" href="https://thingspeak.com/users/mwa0000034209701">mwa0000034209701</a></li>
+      <li id="channel-metadata-access">Access: Public</li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <div class="channel-info-desc">
+      <div class="margin-left">
+        
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <div class="row channel-pages">
+      <ul class="nav nav-tabs" data-turbolinks="false">
+        <li class="nav-item">
+          <a id="channel_link_private_view" class="nav-link active" href="https://thingspeak.com/channels/2572924/private_show">Private View</a>
+        </li>
+        <li class="nav-item">
+          <a id="channel_link_public_view" class="nav-link" href="https://thingspeak.com/channels/2572924">Public View</a>
+        </li>
+        <li class="nav-item">
+          <a id="channel_link_settings" class="nav-link" href="https://thingspeak.com/channels/2572924/edit">Channel Settings</a>
+        </li>
+        <li class="nav-item">
+          <a id="channel_link_sharing" class="nav-link" href="https://thingspeak.com/channels/2572924/sharing">Sharing</a>
+        </li>
+        <li class="nav-item">
+          <a id="channel_link_api_keys" class="nav-link" href="https://thingspeak.com/channels/2572924/api_keys">API Keys</a>
+        </li>
+        <li class="nav-item">
+          <a id="channel_link_import" class="nav-link" href="https://thingspeak.com/channels/2572924/import_export">Data Import / Export</a>
+        </li>
+      </ul>
+      </div>
+
+
+  <div class="col-sm-12 col-md-12">
+    <div class="row">
+  <div class="col-12 col-sm-6">  
+      <div id="add_visualization_modal" class="modal">
+  <div class="modal-dialog window-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Click on a visualization to add it to the Channel</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body window-body">
+        <div id="add_visualization_modal_content_body">
+          <!-- empty widget list banner, hidden by default -->
+          <h3 id="add_visualization_empty_text" class="text_center" hidden="hidden">No visualizations are available to display.</h3>
+        </div>
+      </div>
+      <div class="modal-footer window-footer">
+        <button type="button" id="add_visualization_save" data-bs-dismiss="modal" class="btn btn-primary">Save</button>
+        <button type="button" id="add_visualization_cancel" data-bs-dismiss="modal" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <link rel="stylesheet" media="screen" href="./IOT - ThingSpeak IoT_files/widget-d7f14c05d35e8201237687dcc588515e3424a82c11705cd135f76438ac27efc0.css">
+<script src="./IOT - ThingSpeak IoT_files/widget-feb80e9f45a8534554017de9cb681beb4631080662c0d28183187face37152ab.js.tải xuống" data-turbolinks-track="reload"></script>
+<script src="./IOT - ThingSpeak IoT_files/htmlUtils-e0123513218182b592fad424cd73a0fbdb891a8a4835d1cbe84f9000fa127370.js.tải xuống" data-turbolinks-track="reload"></script>
+
+<div id="add_widget_modal" class="modal">
+  <div class="modal-dialog window-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Click on a widget to add it to the Channel</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body window-body">
+        <div id="add_widget_modal_content_body">
+          <h3 id="add_widget_empty_text" class="text_center" hidden="hidden">No widgets are available to display.</h3>
+          <!-- populate widget preview
+               widget_list is an array of hashes
+               [ { content_type, content_id, title, image_name } ] -->
+            <div id="window_preview_template" class="window-preview-container" title="Gauge" style="background-image: url(/assets/add_widget_gauge-d71b80e4774de3c6071e0434a998561a82f5e161d96db8d432cd0293816f0b3b.svg)" content-type="widget" content-id="">
+  <div class="window-header">
+    <div class="window-title">Gauge</div>
+        <div id="widget-metadata-id" style="display: none;">0</div>
+  </div>
+</div>
+
+            <div id="window_preview_template" class="window-preview-container" title="Numeric Display" style="background-image: url(/assets/add_numeric_display-d5b1a6e43d55d3c3ae7834c77a6f745ef2b05a98d893113201302b156e72f29f.svg)" content-type="widget" content-id="">
+  <div class="window-header">
+    <div class="window-title">Numeric Display</div>
+        <div id="widget-metadata-id" style="display: none;">1</div>
+  </div>
+</div>
+
+            <div id="window_preview_template" class="window-preview-container" title="Lamp Indicator" style="background-image: url(/assets/lamp-e06df52dcbe969787a34d96fffbad569b7508a349f30e174036fc4d56b86ce20.svg)" content-type="widget" content-id="">
+  <div class="window-header">
+    <div class="window-title">Lamp Indicator</div>
+        <div id="widget-metadata-id" style="display: none;">2</div>
+  </div>
+</div>
+
+            <div id="window_preview_template" class="window-preview-container" title="Image Display" style="background-image: url(/assets/image-bf02ccbc69aec0f947f9c15cc38009dee25b732cb13fc9b4c6a82c757f2732de.svg)" content-type="widget" content-id="">
+  <div class="window-header">
+    <div class="window-title">Image Display</div>
+        <div id="widget-metadata-id" style="display: none;">3</div>
+  </div>
+</div>
+
+        </div>
+      </div>
+      <div class="modal-footer window-footer">
+        <button type="button" id="add_widget_next" data-bs-toggle="modal" data-bs-target="#configure_widget_parameters_modal" class="btn btn-primary">Next</button>
+        <button type="button" id="add_widget_cancel" data-bs-dismiss="modal" class="btn btn-default add_widget_cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="configure_widget_parameters_modal" class="modal">
+  <div class="modal-dialog window-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Configure widget parameters</h4>
+        <div class="d-flex justify-content-end">
+        <a href="https://www.mathworks.com/help/thingspeak/channel_display_widgets.html" target="_blank" class="close">
+            <i class="fa fa-question float-end widget-info" aria-hidden="true"></i>
+</a>          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="modal-body window-body">
+        <div id="gauge_min_max_error" class="alert alert-danger alert-dismissable error_banner" style="display:none; clear:both">
+  <span id="gauge_min_max_error_close" class="dismiss"><i class="fa fa-close"></i></span>
+  <span id="min_max_error_span">Max Value should be greater than Min Value</span>
+</div>
+
+<div id="units_error" class="alert alert-danger alert-dismissable error_banner" style="display:none; clear:both">
+  <span id="units_error_close" class="dismiss"><i class="fa fa-close"></i></span>
+  <span id="units_error_span">Numbers not supported in units field.</span>
+</div>
+        <div id="configure_widget_modal_content_body">
+        </div>
+      </div>
+      <div class="modal-footer window-footer">
+        <button type="button" id="add_widget_create" class="btn btn-primary">Create</button>
+        <button type="button" id="add_widget_cancel" data-bs-dismiss="modal" class="btn btn-default add_widget_cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#add_visualization_modal" class="btn btn-default btn-sm btn-margin-bottom"><em class="fa fa-plus-square timecontrol_index"></em>&nbsp;Add Visualizations</button>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#add_widget_modal" class="btn btn-default btn-sm btn-margin-bottom"><em class="fa fa-plus-square timecontrol_index"></em>&nbsp;Add Widgets</button>
+    
+    <div id="devinfo_modal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Export recent data</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <table class="table table-striped">
+          <caption></caption>
+          <tbody><tr style="display: none;">
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+          <tr>
+            <td>IOT Channel Feed:</td>
+            <td>
+              <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/feed.json">JSON</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/feed.xml">XML</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/feed.csv">CSV</a>
+            </td>
+          </tr>
+
+              <tr>
+                <td>Field 1 Data:  NHIỆT ĐỘ </td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/1.json">JSON</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/1.xml">XML</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/1.csv">CSV</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Field 2 Data:  ĐỘ ẨM </td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/2.json">JSON</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/2.xml">XML</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/2.csv">CSV</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Field 3 Data:  GAS </td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/3.json">JSON</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/3.xml">XML</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://thingspeak.com/channels/2572924/field/3.csv">CSV</a>
+                </td>
+              </tr>
+        </tbody></table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    <button type="button" data-bs-toggle="modal" data-bs-target="#devinfo_modal" class="btn btn-default btn-sm btn-margin-bottom" id="channel-data-export-button"><em class="fa fa-external-link-square timecontrol_index"></em>&nbsp;Export recent data</button>
+
+
+  </div>
+  <div class="col-md-6">
+    <div class="float-end">
+        <a class="btn btn-primary btn-sm btn-margin-bottom" id="channel-matlab-analysis-button" href="https://thingspeak.com/apps/matlab_analyses/templates">MATLAB Analysis</a>
+        <a class="btn btn-primary btn-sm btn-margin-bottom" id="channel-matlab-visualization-button" href="https://thingspeak.com/apps/matlab_visualizations/templates?channel_id=2572924&amp;is_private_view=true">MATLAB Visualization</a>
+    </div>
+  </div>
+</div>
+
+    <div class="float-end" data-turbolinks="false">
+     </div>
+
+    <div class="row channel-stats">
+    <div class="col-12">
+      <h2>Channel Stats</h2>
+      <ul class="no-bullets">
+        <li>
+          Created: <abbr class="timeago channel_time_text" title="2024-06-08T16:44:13Z">about an hour ago</abbr>
+        </li>
+          <li>
+            Last entry: 
+          <abbr id="channel-last-written-at" class="timeago channel_time_text" title="2024-06-08T17:29:47.000Z">less than a minute ago</abbr></li>
+        <li>Entries: <span id="channel-entry-count">68</span></li>
+      </ul>
+    </div>
+  </div>
+  
+  <script> var channelURL = '/channels/' + 2572924 + '/feeds/last.json'; </script>
+  
+  <script>
+//<![CDATA[
+function updateChannelInfo(){
+        setInterval(function(){
+          jQuery.ajax({url: channelURL})
+            .done(function(data){
+               if (null !== data){
+                 // update the last written at element
+                  element = document.getElementById('channel-last-written-at');
+                  if (null !== element && undefined !== data.created_at) {
+                    // store the previous entry and compare with current. If we get an older date, ignore it.
+                    max_created_at = new Date(element.title);
+                    current_created_at = new Date(data.created_at);
+                    if (current_created_at > max_created_at) {max_created_at = current_created_at;}
+                    parentNode = element.parentNode;
+                    max_created_at = max_created_at.toISOString();
+                    newElement = document.createElement('abbr');
+                    newElement.setAttribute('id','channel-last-written-at');
+                    newElement.setAttribute('class','timeago channel_time_text');
+                    newElement.setAttribute('title',max_created_at);
+                    newElement.innerText = jQuery.timeago(max_created_at);
+                    // Add element and remove the existing element as it is tied to a timeago timer
+                    if (parentNode) {parentNode.appendChild(newElement);parentNode.removeChild(element);}
+                  }
+                  // update number of entries
+                  element = document.getElementById('channel-entry-count');
+                  if (null !== element) {
+                    oldValue = parseInt(element.innerText);
+                    // last.json will return -1 when there are no entries in the channel
+                    if (data == -1){
+                      // If the old value was >0 and we got a -1, then channel was cleared in another tab
+                      if (oldValue > 0) {
+                        // channel was cleared. reload page
+                        location.reload();
+                      }
+                    }
+                    // Update the entry_id with the entry_id we get back from the call
+                    else {
+                      if (undefined !== data.entry_id) {
+                        // Entry_id for a field's last.json may be less than entry_id of the feed of the channel. Assuming the largest value is the correct one.
+                        if (parseInt(data.entry_id) > oldValue) {element.innerText = data.entry_id;}
+                      }
+                    }
+                  }
+               }
+            });
+        },15000);
+      }
+      updateChannelInfo();
+      
+//]]>
+</script>
+  
+
+    <br>
+    <script type="text/javascript" src="./IOT - ThingSpeak IoT_files/Sortable.min.js.tải xuống" integrity="sha384-cGoVZug22kU0KaYbL6jI8BRsGIAXIYe00lYKPHCwEqD9gwUjxaOBG3X/4mjG6xau" crossorigin="anonymous"></script>
+
+<div class="row">
+  <div class="col-12 col-md-12">
+    <div id="windows_container">
+        <script src="./IOT - ThingSpeak IoT_files/widget-feb80e9f45a8534554017de9cb681beb4631080662c0d28183187face37152ab.js.tải xuống" data-turbolinks-track="reload"></script>
+<link rel="stylesheet" media="screen" href="./IOT - ThingSpeak IoT_files/widget-d7f14c05d35e8201237687dcc588515e3424a82c11705cd135f76438ac27efc0.css">
+
+<div id="window_14434763" class="window-container" draggable="false">
+  <div title="Field 1 Chart" class="window-header">  
+    <div class="window-title">Field 1 Chart</div>
+    <div id="controls" class="window-controls">
+        <div id="remove_window_14434763" class="window-icon"><i class="fa fa-times fa-lg"></i></div>
+          <div id="options_modal_open_14434763" title="Field 1 Chart Options" class="window-icon" data-bs-toggle="modal" data-bs-target="#window_options_modal_14434763"><i class="fa fa-pencil fa-lg"></i></div>
+      <div id="iframe_modal_open_14434763" title="Field 1 Chart IFrame" class="window-icon" data-bs-toggle="modal" data-bs-target="#window_iframe_modal_14434763"><i class="fa fa-comment-o fa-lg"></i></div>
+      <div style="padding-top: 2px;">
+        <a target="_blank" class="chart-header" href="https://thingspeak.com/channels/2572924/charts/1?bgcolor=%23ffffff&amp;color=%23d62020&amp;dynamic=true&amp;results=60&amp;type=line&amp;update=15" draggable="false">
+          <i class="fa fa-external-link fa-lg"></i>
+</a>      </div>
+    </div>
+  </div>
+  <div class="window-content">
+    <iframe id="window_iframe_14434763" class="window-iframe" src="./IOT - ThingSpeak IoT_files/1.html"></iframe>
+  </div>
+</div>
+
+<div id="window_iframe_modal_14434763" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button id="iframe_modal_close_14434763" type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>         
+        <h4 class="modal-title">Field 1 Chart&nbsp;IFrame</h4>
+      </div>
+      <div class="modal-body">
+        <div id="iframe_modal_content_body_14434763">
+          <pre id="iframe_modal_pre_14434763">&lt;iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2572924/charts/1?bgcolor=%23ffffff&amp;color=%23d62020&amp;dynamic=true&amp;results=60&amp;title=NHI%E1%BB%86T+%C4%90%E1%BB%98&amp;type=line&amp;xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m&amp;yaxis=%C2%B0C"&gt;&lt;/iframe&gt;</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="window_options_modal_14434763" class="modal" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Field 1 Chart&nbsp;Options</h4>
+        <div class="d-flex justify-content-end">
+          <a href="https://www.mathworks.com/help/thingspeak/createchart.html" target="_blank" class="close">
+            <i class="fa fa-question float-end widget-info" aria-hidden="true"></i>
+</a>          <button id="options_modal_close_14434763" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div id="options_modal_content_body_14434763">
+          <div class="row mb-3">
+  <div class="col-6">
+    <table>
+      <tbody><tr>
+        <td>
+          Title:</td>
+        <td>
+          <input type="text" name="options[title]" id="options_title" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          X-Axis:</td>
+        <td>
+          <input type="text" name="options[xaxis]" id="options_xaxis" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis:</td>
+        <td>
+          <input type="text" name="options[yaxis]" id="options_yaxis" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Color:</td>
+        <td>
+          <input type="text" name="options[color]" id="options_color" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Background:</td>
+        <td>
+          <input type="text" name="options[bgcolor]" id="options_bgcolor" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Type:</td>
+        <td>
+          <select name="options[type]" id="options_type" class="form-select"><option value="line">line</option>
+<option value="bar">bar</option>
+<option value="column">column</option>
+<option value="spline">spline</option>
+<option value="step">step</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Dynamic?:</td>
+        <td>
+          <select name="options[dynamic]" id="options_dynamic" class="form-select"><option value="true">true</option>
+<option value="false">false</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Days:</td>
+        <td>
+          <input type="text" name="options[days]" id="options_days" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Results:</td>
+        <td>
+          <input type="text" name="options[results]" id="options_results" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-6">
+    <table>
+      <tbody><tr>
+        <td>
+          Timescale:</td>
+        <td>
+          <select name="options[timescale]" id="options_timescale" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Average:</td>
+        <td>
+          <select name="options[average]" id="options_average" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Median:</td>
+        <td>
+          <select name="options[median]" id="options_median" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Sum:</td>
+        <td>
+          <select name="options[sum]" id="options_sum" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Rounding:</td>
+        <td>
+          <input type="text" name="options[round]" id="options_round" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Data Min: </td>
+        <td>
+          <input type="text" name="options[min]" id="options_min" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Data Max: </td>
+        <td>
+          <input type="text" name="options[max]" id="options_max" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis Min: </td>
+        <td>
+          <input type="text" name="options[yaxismin]" id="options_yaxismin" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis Max: </td>
+        <td>
+          <input type="text" name="options[yaxismax]" id="options_yaxismax" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>
+
+        </div>
+      </div>
+      <div class="modal-footer window-footer">
+        <button id="window_options_modal_save_14434763" type="button" class="btn btn-primary">Save</button>
+        <button id="window_options_modal_cancel_14434763" type="button" data-bs-dismiss="modal" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <script src="./IOT - ThingSpeak IoT_files/widget-feb80e9f45a8534554017de9cb681beb4631080662c0d28183187face37152ab.js.tải xuống" data-turbolinks-track="reload"></script>
+<link rel="stylesheet" media="screen" href="./IOT - ThingSpeak IoT_files/widget-d7f14c05d35e8201237687dcc588515e3424a82c11705cd135f76438ac27efc0.css">
+
+<div id="window_14434764" class="window-container" draggable="false">
+  <div title="Field 2 Chart" class="window-header">  
+    <div class="window-title">Field 2 Chart</div>
+    <div id="controls" class="window-controls">
+        <div id="remove_window_14434764" class="window-icon"><i class="fa fa-times fa-lg"></i></div>
+          <div id="options_modal_open_14434764" title="Field 2 Chart Options" class="window-icon" data-bs-toggle="modal" data-bs-target="#window_options_modal_14434764"><i class="fa fa-pencil fa-lg"></i></div>
+      <div id="iframe_modal_open_14434764" title="Field 2 Chart IFrame" class="window-icon" data-bs-toggle="modal" data-bs-target="#window_iframe_modal_14434764"><i class="fa fa-comment-o fa-lg"></i></div>
+      <div style="padding-top: 2px;">
+        <a target="_blank" class="chart-header" href="https://thingspeak.com/channels/2572924/charts/2?bgcolor=%23ffffff&amp;color=%23d62020&amp;dynamic=true&amp;results=60&amp;type=line&amp;update=15" draggable="false">
+          <i class="fa fa-external-link fa-lg"></i>
+</a>      </div>
+    </div>
+  </div>
+  <div class="window-content">
+    <iframe id="window_iframe_14434764" class="window-iframe" src="./IOT - ThingSpeak IoT_files/2.html"></iframe>
+  </div>
+</div>
+
+<div id="window_iframe_modal_14434764" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button id="iframe_modal_close_14434764" type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>         
+        <h4 class="modal-title">Field 2 Chart&nbsp;IFrame</h4>
+      </div>
+      <div class="modal-body">
+        <div id="iframe_modal_content_body_14434764">
+          <pre id="iframe_modal_pre_14434764">&lt;iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2572924/charts/2?bgcolor=%23ffffff&amp;color=%23096bf2&amp;dynamic=true&amp;results=60&amp;title=%C4%90%E1%BB%98+%E1%BA%A8M&amp;type=line&amp;xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m&amp;yaxis=%25"&gt;&lt;/iframe&gt;</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="window_options_modal_14434764" class="modal" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Field 2 Chart&nbsp;Options</h4>
+        <div class="d-flex justify-content-end">
+          <a href="https://www.mathworks.com/help/thingspeak/createchart.html" target="_blank" class="close">
+            <i class="fa fa-question float-end widget-info" aria-hidden="true"></i>
+</a>          <button id="options_modal_close_14434764" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div id="options_modal_content_body_14434764">
+          <div class="row mb-3">
+  <div class="col-6">
+    <table>
+      <tbody><tr>
+        <td>
+          Title:</td>
+        <td>
+          <input type="text" name="options[title]" id="options_title" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          X-Axis:</td>
+        <td>
+          <input type="text" name="options[xaxis]" id="options_xaxis" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis:</td>
+        <td>
+          <input type="text" name="options[yaxis]" id="options_yaxis" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Color:</td>
+        <td>
+          <input type="text" name="options[color]" id="options_color" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Background:</td>
+        <td>
+          <input type="text" name="options[bgcolor]" id="options_bgcolor" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Type:</td>
+        <td>
+          <select name="options[type]" id="options_type" class="form-select"><option value="line">line</option>
+<option value="bar">bar</option>
+<option value="column">column</option>
+<option value="spline">spline</option>
+<option value="step">step</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Dynamic?:</td>
+        <td>
+          <select name="options[dynamic]" id="options_dynamic" class="form-select"><option value="true">true</option>
+<option value="false">false</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Days:</td>
+        <td>
+          <input type="text" name="options[days]" id="options_days" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Results:</td>
+        <td>
+          <input type="text" name="options[results]" id="options_results" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-6">
+    <table>
+      <tbody><tr>
+        <td>
+          Timescale:</td>
+        <td>
+          <select name="options[timescale]" id="options_timescale" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Average:</td>
+        <td>
+          <select name="options[average]" id="options_average" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Median:</td>
+        <td>
+          <select name="options[median]" id="options_median" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Sum:</td>
+        <td>
+          <select name="options[sum]" id="options_sum" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Rounding:</td>
+        <td>
+          <input type="text" name="options[round]" id="options_round" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Data Min: </td>
+        <td>
+          <input type="text" name="options[min]" id="options_min" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Data Max: </td>
+        <td>
+          <input type="text" name="options[max]" id="options_max" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis Min: </td>
+        <td>
+          <input type="text" name="options[yaxismin]" id="options_yaxismin" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis Max: </td>
+        <td>
+          <input type="text" name="options[yaxismax]" id="options_yaxismax" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>
+
+        </div>
+      </div>
+      <div class="modal-footer window-footer">
+        <button id="window_options_modal_save_14434764" type="button" class="btn btn-primary">Save</button>
+        <button id="window_options_modal_cancel_14434764" type="button" data-bs-dismiss="modal" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <script src="./IOT - ThingSpeak IoT_files/widget-feb80e9f45a8534554017de9cb681beb4631080662c0d28183187face37152ab.js.tải xuống" data-turbolinks-track="reload"></script>
+<link rel="stylesheet" media="screen" href="./IOT - ThingSpeak IoT_files/widget-d7f14c05d35e8201237687dcc588515e3424a82c11705cd135f76438ac27efc0.css">
+
+<div id="window_14434765" class="window-container" draggable="false">
+  <div title="Field 3 Chart" class="window-header">  
+    <div class="window-title">Field 3 Chart</div>
+    <div id="controls" class="window-controls">
+        <div id="remove_window_14434765" class="window-icon"><i class="fa fa-times fa-lg"></i></div>
+          <div id="options_modal_open_14434765" title="Field 3 Chart Options" class="window-icon" data-bs-toggle="modal" data-bs-target="#window_options_modal_14434765"><i class="fa fa-pencil fa-lg"></i></div>
+      <div id="iframe_modal_open_14434765" title="Field 3 Chart IFrame" class="window-icon" data-bs-toggle="modal" data-bs-target="#window_iframe_modal_14434765"><i class="fa fa-comment-o fa-lg"></i></div>
+      <div style="padding-top: 2px;">
+        <a target="_blank" class="chart-header" href="https://thingspeak.com/channels/2572924/charts/3?bgcolor=%23ffffff&amp;color=%23d62020&amp;dynamic=true&amp;results=60&amp;type=line&amp;update=15" draggable="false">
+          <i class="fa fa-external-link fa-lg"></i>
+</a>      </div>
+    </div>
+  </div>
+  <div class="window-content">
+    <iframe id="window_iframe_14434765" class="window-iframe" src="./IOT - ThingSpeak IoT_files/3.html"></iframe>
+  </div>
+</div>
+
+<div id="window_iframe_modal_14434765" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button id="iframe_modal_close_14434765" type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>         
+        <h4 class="modal-title">Field 3 Chart&nbsp;IFrame</h4>
+      </div>
+      <div class="modal-body">
+        <div id="iframe_modal_content_body_14434765">
+          <pre id="iframe_modal_pre_14434765">&lt;iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2572924/charts/3?bgcolor=%23ffffff&amp;color=%23e5f516&amp;dynamic=true&amp;results=60&amp;title=GAS&amp;type=line&amp;xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m&amp;yaxis=%25"&gt;&lt;/iframe&gt;</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="window_options_modal_14434765" class="modal" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Field 3 Chart&nbsp;Options</h4>
+        <div class="d-flex justify-content-end">
+          <a href="https://www.mathworks.com/help/thingspeak/createchart.html" target="_blank" class="close">
+            <i class="fa fa-question float-end widget-info" aria-hidden="true"></i>
+</a>          <button id="options_modal_close_14434765" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div id="options_modal_content_body_14434765">
+          <div class="row mb-3">
+  <div class="col-6">
+    <table>
+      <tbody><tr>
+        <td>
+          Title:</td>
+        <td>
+          <input type="text" name="options[title]" id="options_title" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          X-Axis:</td>
+        <td>
+          <input type="text" name="options[xaxis]" id="options_xaxis" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis:</td>
+        <td>
+          <input type="text" name="options[yaxis]" id="options_yaxis" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Color:</td>
+        <td>
+          <input type="text" name="options[color]" id="options_color" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Background:</td>
+        <td>
+          <input type="text" name="options[bgcolor]" id="options_bgcolor" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Type:</td>
+        <td>
+          <select name="options[type]" id="options_type" class="form-select"><option value="line">line</option>
+<option value="bar">bar</option>
+<option value="column">column</option>
+<option value="spline">spline</option>
+<option value="step">step</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Dynamic?:</td>
+        <td>
+          <select name="options[dynamic]" id="options_dynamic" class="form-select"><option value="true">true</option>
+<option value="false">false</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Days:</td>
+        <td>
+          <input type="text" name="options[days]" id="options_days" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Results:</td>
+        <td>
+          <input type="text" name="options[results]" id="options_results" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-6">
+    <table>
+      <tbody><tr>
+        <td>
+          Timescale:</td>
+        <td>
+          <select name="options[timescale]" id="options_timescale" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Average:</td>
+        <td>
+          <select name="options[average]" id="options_average" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Median:</td>
+        <td>
+          <select name="options[median]" id="options_median" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Sum:</td>
+        <td>
+          <select name="options[sum]" id="options_sum" class="mutuallyexclusive form-select"><option value="" label=" "></option><option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="60">60</option>
+<option value="240">240</option>
+<option value="720">720</option>
+<option value="1440">1440</option>
+<option value="daily">daily</option></select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Rounding:</td>
+        <td>
+          <input type="text" name="options[round]" id="options_round" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Data Min: </td>
+        <td>
+          <input type="text" name="options[min]" id="options_min" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Data Max: </td>
+        <td>
+          <input type="text" name="options[max]" id="options_max" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis Min: </td>
+        <td>
+          <input type="text" name="options[yaxismin]" id="options_yaxismin" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Y-Axis Max: </td>
+        <td>
+          <input type="text" name="options[yaxismax]" id="options_yaxismax" value="" class="form-control" maxlength="80">
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+</div>
+
+        </div>
+      </div>
+      <div class="modal-footer window-footer">
+        <button id="window_options_modal_save_14434765" type="button" class="btn btn-primary">Save</button>
+        <button id="window_options_modal_cancel_14434765" type="button" data-bs-dismiss="modal" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+      <div id="add_visualization_window" class="add_visualization_window" data-bs-toggle="modal" data-bs-target="#add_visualization_modal">
+        <em class="fa fa-plus-square timecontrol_index"></em>&nbsp;Add Visualizations
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).on('page:load ready', function (){
+    window.channel = ThingSpeak.Channel.init({"public_view":false,"current_user_owns":true,"windows":[{"id":14434763,"channel_id":2572924,"position":1,"created_at":"2024-06-08T16:44:13Z","updated_at":"2024-06-08T16:44:13Z","content_type":"chart","public_flag":false,"content_id":1,"options":"bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","options_json":"{\"bgcolor\":\"#ffffff\",\"color\":\"#d62020\",\"dynamic\":\"true\",\"results\":\"60\",\"type\":\"line\",\"update\":\"15\"}","iframe_html":"\u003ciframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"https://thingspeak.com/channels/2572924/charts/1?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15\"\u003e\u003c/iframe\u003e","iframe_src":"/channels/2572924/charts/1?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","preview_image_path":"/assets/add_visualization_chart-a41736c2720006799b06e29c3b76d24b02ce64ea9bd73d824af0809474953d02.svg","url":"/channels/2572924/windows/14434763","title":"Field 1 Chart"},{"id":14434799,"channel_id":2572924,"position":1,"created_at":"2024-06-08T17:03:32Z","updated_at":"2024-06-08T17:24:28Z","content_type":"chart","public_flag":true,"content_id":1,"options":"bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026title=NHI%E1%BB%86T+%C4%90%E1%BB%98\u0026type=line\u0026xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m\u0026yaxis=%C2%B0C","options_json":"{\"bgcolor\":\"#ffffff\",\"color\":\"#d62020\",\"dynamic\":\"true\",\"results\":\"60\",\"title\":\"NHIỆT ĐỘ\",\"type\":\"line\",\"xaxis\":\"thời điểm\",\"yaxis\":\"°C\"}","iframe_html":"\u003ciframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"https://thingspeak.com/channels/2572924/charts/1?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026title=NHI%E1%BB%86T+%C4%90%E1%BB%98\u0026type=line\u0026xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m\u0026yaxis=%C2%B0C\"\u003e\u003c/iframe\u003e","iframe_src":"/channels/2572924/charts/1?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026title=NHI%E1%BB%86T+%C4%90%E1%BB%98\u0026type=line\u0026xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m\u0026yaxis=%C2%B0C","preview_image_path":"/assets/add_visualization_chart-a41736c2720006799b06e29c3b76d24b02ce64ea9bd73d824af0809474953d02.svg","url":"/channels/2572924/windows/14434799","title":"Field 1 Chart"},{"id":14434764,"channel_id":2572924,"position":2,"created_at":"2024-06-08T16:44:13Z","updated_at":"2024-06-08T16:44:13Z","content_type":"chart","public_flag":false,"content_id":2,"options":"bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","options_json":"{\"bgcolor\":\"#ffffff\",\"color\":\"#d62020\",\"dynamic\":\"true\",\"results\":\"60\",\"type\":\"line\",\"update\":\"15\"}","iframe_html":"\u003ciframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"https://thingspeak.com/channels/2572924/charts/2?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15\"\u003e\u003c/iframe\u003e","iframe_src":"/channels/2572924/charts/2?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","preview_image_path":"/assets/add_visualization_chart-a41736c2720006799b06e29c3b76d24b02ce64ea9bd73d824af0809474953d02.svg","url":"/channels/2572924/windows/14434764","title":"Field 2 Chart"},{"id":14434800,"channel_id":2572924,"position":2,"created_at":"2024-06-08T17:03:32Z","updated_at":"2024-06-08T17:03:32Z","content_type":"chart","public_flag":true,"content_id":2,"options":"bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","options_json":"{\"bgcolor\":\"#ffffff\",\"color\":\"#d62020\",\"dynamic\":\"true\",\"results\":\"60\",\"type\":\"line\",\"update\":\"15\"}","iframe_html":"\u003ciframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"https://thingspeak.com/channels/2572924/charts/2?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15\"\u003e\u003c/iframe\u003e","iframe_src":"/channels/2572924/charts/2?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","preview_image_path":"/assets/add_visualization_chart-a41736c2720006799b06e29c3b76d24b02ce64ea9bd73d824af0809474953d02.svg","url":"/channels/2572924/windows/14434800","title":"Field 2 Chart"},{"id":14434765,"channel_id":2572924,"position":3,"created_at":"2024-06-08T16:44:13Z","updated_at":"2024-06-08T16:44:13Z","content_type":"chart","public_flag":false,"content_id":3,"options":"bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","options_json":"{\"bgcolor\":\"#ffffff\",\"color\":\"#d62020\",\"dynamic\":\"true\",\"results\":\"60\",\"type\":\"line\",\"update\":\"15\"}","iframe_html":"\u003ciframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"https://thingspeak.com/channels/2572924/charts/3?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15\"\u003e\u003c/iframe\u003e","iframe_src":"/channels/2572924/charts/3?bgcolor=%23ffffff\u0026color=%23d62020\u0026dynamic=true\u0026results=60\u0026type=line\u0026update=15","preview_image_path":"/assets/add_visualization_chart-a41736c2720006799b06e29c3b76d24b02ce64ea9bd73d824af0809474953d02.svg","url":"/channels/2572924/windows/14434765","title":"Field 3 Chart"},{"id":14434801,"channel_id":2572924,"position":3,"created_at":"2024-06-08T17:03:32Z","updated_at":"2024-06-08T17:26:08Z","content_type":"chart","public_flag":true,"content_id":3,"options":"bgcolor=%23ffffff\u0026color=%23e5f516\u0026dynamic=true\u0026results=60\u0026title=GAS\u0026type=line\u0026xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m\u0026yaxis=%25","options_json":"{\"bgcolor\":\"#ffffff\",\"color\":\"#e5f516\",\"dynamic\":\"true\",\"results\":\"60\",\"title\":\"GAS\",\"type\":\"line\",\"xaxis\":\"thời điểm\",\"yaxis\":\"%\"}","iframe_html":"\u003ciframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"https://thingspeak.com/channels/2572924/charts/3?bgcolor=%23ffffff\u0026color=%23e5f516\u0026dynamic=true\u0026results=60\u0026title=GAS\u0026type=line\u0026xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m\u0026yaxis=%25\"\u003e\u003c/iframe\u003e","iframe_src":"/channels/2572924/charts/3?bgcolor=%23ffffff\u0026color=%23e5f516\u0026dynamic=true\u0026results=60\u0026title=GAS\u0026type=line\u0026xaxis=th%E1%BB%9Di+%C4%91i%E1%BB%83m\u0026yaxis=%25","preview_image_path":"/assets/add_visualization_chart-a41736c2720006799b06e29c3b76d24b02ce64ea9bd73d824af0809474953d02.svg","url":"/channels/2572924/windows/14434801","title":"Field 3 Chart"}],"channel":{"id":2572924,"user_id":1314667,"name":"IOT","description":"","latitude":"0.0","longitude":"0.0","field1":"NHIỆT ĐỘ","field2":"ĐỘ ẨM","field3":"GAS","field4":null,"field5":null,"field6":null,"field7":null,"field8":null,"scale1":null,"scale2":null,"scale3":null,"scale4":null,"scale5":null,"scale6":null,"scale7":null,"scale8":null,"created_at":"2024-06-08T16:44:13Z","updated_at":"2024-06-08T17:03:32Z","elevation":"","last_entry_id":63,"public_flag":true,"options1":null,"options2":null,"options3":null,"options4":null,"options5":null,"options6":null,"options7":null,"options8":null,"status":null,"url":null,"video_id":null,"video_type":"youtube","clearing":false,"ranking":30,"user_agent":null,"realtime_io_serial_number":null,"metadata":"","last_write_at":null,"batch_updated_at":null,"show_location":false,"show_video":false,"show_status":false,"license_id":0,"is_updating":null,"is_privately_shared_flag":false,"github_url":null,"forward_to_mqtt":false}});
+  })
+</script>
+
+  </div>
+</div>
+<script type="text/javascript" src="./IOT - ThingSpeak IoT_files/moment.min.js.tải xuống" integrity="sha384-8hHkOkbWN1TLWwet/jpbJ0zbx3FJDeYJgQ8dX1mRrv/vfCfHCqFSFZYCgaMML3z9" crossorigin="anonymous"></script>
+<script>
+//<![CDATA[
+var meter_data = {"licenses":[{"id":5532296,"license_id":-1314667,"licensed_prod_id":-1314667,"qty":1,"start_date":"2024-06-08","end_date":"2025-06-07","offering_id":0,"created_at":"2024-06-08T16:43:08.000Z","updated_at":"2024-06-08T16:43:08.000Z","service_date_id":null,"messages_remaining":2999972,"messages_allowed":3000000}],"domain":"https://thingspeak.com/","messages_per_paid_unit":"33000000","free_messages_per_year":"3000000","license_center_link":"https://www.mathworks.com/licensecenter/licenses/:lid","user_type":0,"is_free_user":true,"free_license_id":-1314667,"license_type":"Free"}
+//]]>
+</script>
+<script type="text/javascript">
+ if( meter_data !== null )
+  {
+  	loadMeterData(meter_data);
+  } 
+</script>
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+var cookieBanner = {
+  /* Hide the cookie banner if it was accepted in the last year */
+  showIfNotAccepted: function(){
+    if ( localStorage ) {
+      lastCookieNotificationAcceptedDate = parseInt(localStorage.getItem('tspk-cookie-banner'));
+      /* 31536000000 is the number of milliseconds since 365 days ago */
+      if (  isNaN(lastCookieNotificationAcceptedDate) || ( lastCookieNotificationAcceptedDate < ((new Date).getTime() - 31536000000) ) ){
+        $("#cookie-banner").show();
+      } else {
+        $("#cookie-banner").hide();
+      }
+    }
+  },
+  /* Store time when the cookie notification was accepted in the browser local storage for this site */
+  setAcceptanceTime: function() {
+    if ( localStorage ) {
+      localStorage.setItem('tspk-cookie-banner',(new Date).getTime());
+      cookieBanner.showIfNotAccepted();
+    }
+  }
+};
+</script>
+
+<div id="cookie-banner" class="cookie-alert-warning" style="display: block;">
+  <script type="text/javascript">cookieBanner.showIfNotAccepted();</script>
+  <div id="cookie-icon" class="text-end"><span class="fa fa-exclamation-triangle"></span></div>
+  <div id="cookie-text"><p>This website uses cookies to improve your user experience, personalize content and ads, and analyze website traffic. By continuing to use this website, you consent to our use of cookies. Please see our <a target="_blank" rel="noopener noreferrer" style="font-size: small" href="https://www.mathworks.com/company/aboutus/policies_statements">Privacy Policy</a> to learn more about cookies and how to change your settings.</p></div>
+  <div id="cookie-remove"><span class="fa fa-times" onclick="cookieBanner.setAcceptanceTime();return false;"></span></div>
+</div>
+    <div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-7">
+        <span class="d-none d-md-block d-flex text-md-center justify-content-md-center">
+          <a href="https://blogs.mathworks.com/iot/" title="IoT Blog" target="_blank" rel="noopener noreferrer">Blog</a> |
+          <a href="https://www.mathworks.com/help/thingspeak/" title="ThingSpeak Documentation" target="_blank" rel="noopener noreferrer">Documentation</a> |
+          <a href="https://www.mathworks.com/help/thingspeak/getting-started-with-thingspeak.html" title="ThingSpeak Tutorials" target="_blank" rel="noopener noreferrer">Tutorials</a> |
+          <a target="_blank" rel="noopener noreferrer" href="https://www.mathworks.com/mw_account/company/aboutus/policies_statements/online-services-agreement.html">Terms</a> |
+          <a target="_blank" rel="noopener noreferrer" href="https://www.mathworks.com/company/aboutus/policies_statements">Privacy Policy</a>
+        </span>
+      </div>
+      <div class="col-12 col-md-5">
+        <span class="d-flex text-center justify-content-center text-md-end justify-content-md-end">
+          <a alt="Facebook" target="_blank" rel="noopener noreferrer" href="http://www.facebook.com/thingspeak"><img src="./IOT - ThingSpeak IoT_files/ico-facebook-864217e7723b63bd8687c81e99e677c0a1efba1db6282794f4077f3d6d5cae86.svg" width="16" height="16"></a>
+          <a alt="Twitter" target="_blank" rel="noopener noreferrer" href="http://www.twitter.com/thingspeak"><img src="./IOT - ThingSpeak IoT_files/ico-twitter-502ca920ad71f398928c9ec00203b98655f8b1ba821b95f4cf11b4eef72b6d4b.svg" width="16" height="16"></a>
+          <a alt="RSS" target="_blank" rel="noopener noreferrer" href="http://feeds.feedburner.com/internetofthings"><img src="./IOT - ThingSpeak IoT_files/ico-rss-349a27d6441a574f9218ee6e808d147dc5566204c79d967cf90b33b0bd026171.svg" width="16" height="16"></a>
+           © 2024 <a href="https://www.mathworks.com/" target="_blank" rel="noopener noreferrer">The MathWorks, Inc.</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="confirmation-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirm</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-sm btn-default" type="button" data-bs-dismiss="modal">Cancel</button>
+        <button id="confirmation-modal-ok" class="btn btn-sm btn-primary" type="button" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script type="text/javascript">_satellite.pageBottom();</script>
+  
+<style>body.tablesorter-disableSelection { -ms-user-select: none; -moz-user-select: -moz-none;-khtml-user-select: none; -webkit-user-select: none; user-select: none; }.tablesorter-resizable-container { position: relative; height: 1px; }.tablesorter-resizable-handle { position: absolute; display: inline-block; width: 8px;top: 1px; cursor: ew-resize; z-index: 3; user-select: none; -moz-user-select: none; }</style><iframe src="./IOT - ThingSpeak IoT_files/status.html" tabindex="-1" id="embeddedStatus" frameborder="0" style="height: 0px; width: 0px;"></iframe><iframe id="qualaroo_dnt_frame" src="./IOT - ThingSpeak IoT_files/frame.html" style="width: 1px; height: 1px; display: none; opacity: 0;"></iframe></body><div style="position: absolute; top: 0px; z-index: 2147483647; display: block !important; overflow: unset;"><template shadowrootmode="open"><style>@import "chrome-extension://jdfkmiabjpfjacifcmihfdjhpnjpiick/css/content-script.css";
+</style><div class="body"><div class="turn-lights-overlay"></div><toasts id="toasts-container"></toasts></div></template></div><div class="corom-element" en2vi-version="3" style="position: absolute; top: 0px; left: 0px; right: 0px; height: 0px; margin: 0px; text-align: left; z-index: 2147483647; pointer-events: none; border: none; display: block;"><template shadowrootmode="open"><style>@import "chrome-extension://gfgbmghkdjckppeomloefmbphdfmokgd/css/common.css";
+@import "chrome-extension://gfgbmghkdjckppeomloefmbphdfmokgd/css/style.css";</style><style id="svelte-7xscto">.toast-container.svelte-7xscto{position:fixed;pointer-events:none;width:100%;height:100%;display:flex;flex-direction:column-reverse;align-items:center;z-index:1000;bottom:0;padding:16px}</style>   <div class="toast-container svelte-7xscto"></div></template></div></html>
