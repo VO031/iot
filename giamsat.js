@@ -187,6 +187,7 @@ var gasChart = new Chart(document.getElementById('gasChart').getContext('2d'), {
         }
     }
 });
+
 // Lắng nghe sự thay đổi của nhiệt độ
 database.ref("IOT/Nhiet do").on("value", function(snapshot) {
     var temp = snapshot.val();

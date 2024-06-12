@@ -58,7 +58,7 @@ body {
     left: 0; /* Cách trái 0 */
     width: 60px; /* Chiều rộng 60px */
     height: 100%; /* Chiều cao 100% */
-    background-color: rgba(0, 123, 255, 0); /* Màu nền trong suốt */
+    background-color: rgba(0, 123, 255, 0); /* Màu nền*/
     overflow-x: hidden; /* Ẩn tràn theo chiều ngang */
     transition: width 0.3s ease, left 0.3s ease; /* Hiệu ứng chuyển đổi chiều rộng và vị trí */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
@@ -176,8 +176,7 @@ body {
     opacity: 1; /* Độ mờ 1 khi hover */
 }
 
-.member-info h3,
-.member-info p {
+.member-info h3, .member-info p {
     margin: 5px 0; /* Thêm khoảng cách trên dưới 5px */
     color: #fff; /* Màu chữ trắng */
 }
@@ -215,7 +214,7 @@ body {
 }
 
 .contact-box {
-    background-image: url('./img/mu.jfif'); /* Đường dẫn ảnh nền */
+  background-color: #fff;
     background-size: cover; /* Ảnh nền bao phủ toàn bộ */
     background-position: center; /* Đặt vị trí ảnh ở giữa */
     padding: 20px; /* Thêm padding 20px */
